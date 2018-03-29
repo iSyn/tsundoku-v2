@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Serif');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.tsundoku {
+    position: relative;
+    min-height: 100vh;
+    min-width: 100vw;
+    background-color: #fbfbfb;
+    overflow: hidden;
+}
+
+.books-img {
+    position: absolute;
+    bottom: -50%;
+    min-width: 100%;
+    /* max-width: 100%; */
+}
+
+header {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding: 20px;
+    font-family: "IBM Plex Serif";
+    font-size: 50px;
+}
