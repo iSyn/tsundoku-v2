@@ -56,6 +56,11 @@ class Tsundoku extends Component {
         this.setState({ showSigninModal, showHamburgerMenu: false })
     }
 
+    createNewUser = async (newUser) => {
+        await axios.post("/users", newUser)
+        this.setState({ showSignupModal: false })
+    }
+
     render() {
         
         const LandingPageComponent = () => {
@@ -70,6 +75,7 @@ class Tsundoku extends Component {
                     toggleHamburgerMenu={this.toggleHamburgerMenu.bind(this)}
                     toggleSignupModal={this.toggleSignupModal.bind(this)}
                     toggleSigninModal={this.toggleSigninModal.bind(this)}
+                    createNewUser={this.createNewUser}
                 />
             )
         }

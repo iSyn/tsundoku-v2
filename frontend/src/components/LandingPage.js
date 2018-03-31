@@ -23,7 +23,9 @@ class LandingPage extends Component {
 
         return (  
             <div className='landing-page'>
-                { this.props.showSignupModal && <SignupModal toggleSignupModal={this.props.toggleSignupModal}/> }
+                { this.props.showSignupModal && 
+                    <SignupModal toggleSignupModal={this.props.toggleSignupModal} createNewUser={this.props.createNewUser}/> 
+                }
                 { this.props.showSigninModal && <SigninModal toggleSigninModal={this.props.toggleSigninModal}/> }
                 { this.props.showHamburgerMenu && <HamburgerMenu toggleSignupModal={this.props.toggleSignupModal} toggleSigninModal={this.props.toggleSigninModal} /> }
                 <Header 
