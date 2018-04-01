@@ -1,11 +1,23 @@
+/*
+
+Questions:
+- Integer on SQL
+- Testing basic route doesnt even work
+- Why doesnt <Redirct/> work on HamburgerMenu.js
+
+*/
+
+
 import React, { Component } from 'react';
 import './Tsundoku.css';
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Redirect } from "react-router-dom"
 import axios from "axios";
 
 import LandingPage from './components/LandingPage'
 import SearchPage from './components/SearchPage'
+import ProfilePage from './components/ProfilePage'
 
 class Tsundoku extends Component {
 
@@ -189,11 +201,20 @@ class Tsundoku extends Component {
             )
         }
 
+        const ProfilePageComponent = () => {
+            return (
+                <ProfilePage 
+                    user={this.state.user}
+                />
+            )
+        }
+
         return (  
             <Router>
                 <Switch>
                     <Route exact path='/' render={LandingPageComponent} />
                     <Route exact path='/books' render={SearchPageComponent} />
+                    <Route exact path='/profile' render={ProfilePageComponent} />
                 </Switch>
             </Router>
         )

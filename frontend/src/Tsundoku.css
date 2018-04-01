@@ -277,8 +277,12 @@ header i:active {
 }
 
 @keyframes fallin {
-    from { top: 0%; }
-    to { top: 50%; }
+    from { 
+        top: 0%;
+    }
+    to { 
+        top: 50%; 
+    }
 }
 
 .signup-modal h1 {
@@ -414,6 +418,7 @@ header i:active {
     padding: 10px;
     display: flex;
     flex-flow: row nowrap;
+    animation: fallin .3s;
 }
 
 .book-img {
