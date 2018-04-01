@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 
 class SigninModal extends Component {
 
-    handleCloseClick = () => {
-        console.log('click')
-        this.props.toggleSigninModal()
-    }
-
     handleSubmit = (e) => {
         e.preventDefault()
         let username = document.querySelector('.login-username').value
@@ -18,11 +13,14 @@ class SigninModal extends Component {
         document.querySelector(".login-password").value = ""
     }
 
+    closeModals = () => this.props.closeAllModals()
+
     render() { 
         return (  
             <div className='signup-modal-container'>
+                <div onClick={this.closeModals} className="modal-bg"></div>
                 <div className="signup-modal">
-                    <i onClick={this.handleCloseClick}className='fa fa-times'></i>
+                    <i onClick={this.closeModals}className='fa fa-times'></i>
                     <h1>SIGN IN</h1>
                     <form onSubmit={this.handleSubmit}>
                         <div className="form-input-container">

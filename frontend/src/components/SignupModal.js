@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 class SignupModal extends Component {
 
-    handleCloseClick = () => this.props.toggleSignupModal()
-
     handleSubmit = (e) => {
         e.preventDefault()
         let username = document.querySelector('.input-username').value
@@ -26,11 +24,14 @@ class SignupModal extends Component {
         }
     }
 
+    closeModals = () => this.props.closeAllModals()
+
     render() { 
         return (  
             <div className='signup-modal-container'>
+                <div onClick={this.closeModals} className="modal-bg"></div>
                 <div className="signup-modal">
-                    <i onClick={this.handleCloseClick}className='fa fa-times'></i>
+                    <i onClick={this.closeModals}className='fa fa-times'></i>
                     <h1>SIGN UP</h1>
                     <form onSubmit={this.handleSubmit}>
                         <div className="form-input-container form--username">

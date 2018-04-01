@@ -26,11 +26,16 @@ class LandingPage extends Component {
             <div className='landing-page'>
                 <NotificationContainer notifications={this.props.notifications} removeNotification={this.props.removeNotification}/>
                 { this.props.showSignupModal && 
-                    <SignupModal toggleSignupModal={this.props.toggleSignupModal} createNewUser={this.props.createNewUser}/> 
+                    <SignupModal 
+                        closeAllModals={this.props.closeAllModals} 
+                        toggleSignupModal={this.props.toggleSignupModal} 
+                        createNewUser={this.props.createNewUser}
+                    /> 
                 }
                 { 
                     this.props.showSigninModal && 
                     <SigninModal 
+                        closeAllModals={this.props.closeAllModals}
                         toggleSigninModal={this.props.toggleSigninModal}
                         signIn={this.props.signIn}
                     /> 

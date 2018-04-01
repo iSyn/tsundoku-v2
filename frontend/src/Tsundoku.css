@@ -249,12 +249,20 @@ header i:active {
     position: absolute;
     top: 0;
     left: 0;
-    /* background: rgba(0, 0, 0, 0.7); */
+}
+
+.modal-bg {
+    position: absolute;
     background: rgba(255, 255, 255, 0.7);
-    z-index: 3;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 3
 }
 
 .signup-modal {
+    z-index: 4;
     position: relative;
     width: 400px;
     /* height: 500px; */
@@ -281,7 +289,7 @@ header i:active {
     background: #C0B283;
 }
 
-.signup-modal .fa-times {
+.signup-modal .fa-times, .book-modal .fa-times {
     position: absolute;
     right: -10px;
     top: -10px;
@@ -294,7 +302,11 @@ header i:active {
     font-size: 25px;
 }
 
-.signup-modal .fa-times:hover {
+.book-modal .fa-times {
+    border-color: black;
+}
+
+.signup-modal .fa-times:hover, .book-modal .fa-times:hover {
     color: red;
 }
 
@@ -388,4 +400,67 @@ header i:active {
     to {
         top: -100%;
     }
+}
+
+.book-modal {
+    z-index: 4;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #f4f4f4;
+    /* border: 3px solid black; */
+    box-shadow: 0 0 20px #545454;
+    padding: 10px;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.book-img {
+    min-height: 513px;
+    height: 513px;
+    max-height: 513px;
+    width: 384px;
+    min-width: 384px;
+    max-width: 384px;
+    background-size: 100% 100%;
+}
+
+.book-info {
+    padding: 10px;
+    text-align: center;
+    width: 384px;
+    max-height: 513px;
+    overflow: auto;
+    color: #545454;
+}
+
+.book-info h1 {
+    font-family: 'Playfair Display';
+}
+
+.book-info p {
+    font-family: 'IBM Plex Serif';
+}
+
+.book-info button {
+    margin: 5px 0;
+    width: 100%;
+    height: 80px;
+    background: #459cd3;
+    border-bottom: 4px solid #2f536a;
+    border-radius: 5px;
+    font-family: 'IBM Plex Serif';
+    color: white;
+    outline: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+button:hover {
+   filter: contrast(140%);
+}
+
+button:active {
+    filter: brightness(.9);
 }

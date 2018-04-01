@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom'
 import Header from './Header';
 import Book from './Book';
 import HamburgerMenu from './HamburgerMenu'
+import BookModal from './BookModal'
 
 
 class SearchPage extends Component {
@@ -32,7 +33,23 @@ class SearchPage extends Component {
 
         return (  
             <div className='search-page'>
-                { this.props.showHamburgerMenu && <HamburgerMenu /> }
+                { this.props.selected && 
+                    <BookModal 
+                        selected={this.props.selected}
+                        closeAllModals={this.props.closeAllModals}
+                        user={this.props.user}
+                    /> 
+                }
+                { this.props.showHamburgerMenu && 
+                    <HamburgerMenu 
+                        user={this.props.user}
+                        signOut={this.props.signOut}
+                        signIn={this.props.signIn}
+                        toggleSignupModal={this.props.toggleSignupModal}
+                        toggleSigninModal={this.props.toggleSigninModal}
+                    /> 
+
+                }
                 <Header 
                     showHamburgerMenu={this.props.showHamburgerMenu}
                     toggleHamburgerMenu={this.props.toggleHamburgerMenu}

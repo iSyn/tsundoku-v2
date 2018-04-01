@@ -14,7 +14,7 @@ class Tsundoku extends Component {
         userId: null,
         searchResults: [],
         notifications: [],
-        selected: {},
+        selected: null,
         searching: false,
         redirect: false,
         showHamburgerMenu: false,
@@ -130,6 +130,14 @@ class Tsundoku extends Component {
         this.setState({ notifications })
     }
 
+    closeAllModals = () => {
+        this.setState({
+            selected: null,
+            showSignupModal: false,
+            showSigninModal: false,
+        })
+    }
+
     render() {
         
         const LandingPageComponent = () => {
@@ -139,7 +147,6 @@ class Tsundoku extends Component {
                     searching={this.state.searching}
                     redirect={this.state.redirect}
                     //
-
                     showSignupModal={this.state.showSignupModal}
                     showSigninModal={this.state.showSigninModal}
                     showHamburgerMenu={this.state.showHamburgerMenu}
@@ -147,12 +154,14 @@ class Tsundoku extends Component {
                     toggleSignupModal={this.toggleSignupModal.bind(this)}
                     toggleSigninModal={this.toggleSigninModal.bind(this)}
                     toggleHamburgerMenu={this.toggleHamburgerMenu.bind(this)}
+                    closeAllModals={this.closeAllModals.bind(this)}
                     //
                     createNewUser={this.createNewUser}
                     signOut={this.signOut.bind(this)}
                     signIn={this.signIn.bind(this)}
                     user={this.state.user}
                     //
+
                     notifications={this.state.notifications}
                     removeNotification={this.removeNotification.bind(this)}
                 />
@@ -165,8 +174,17 @@ class Tsundoku extends Component {
                     searchFor={this.searchFor.bind(this)}
                     searchResults={this.state.searchResults}
                     setSelected={this.setSelected.bind(this)}
+                    selected={this.state.selected}
                     showHamburgerMenu={this.state.showHamburgerMenu}
+
                     toggleHamburgerMenu={this.toggleHamburgerMenu.bind(this)}
+                    toggleSignupModal={this.toggleSignupModal.bind(this)}
+                    toggleSigninModal={this.toggleSigninModal.bind(this)}
+                    closeAllModals={this.closeAllModals.bind(this)}
+
+                    signOut={this.signOut.bind(this)}
+                    signIn={this.signIn.bind(this)}
+                    user={this.state.user}
                 />
             )
         }
