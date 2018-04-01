@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 
-import { Redirect } from 'react-router-dom'
-
 class HamburgerMenu extends Component {
 
     handleSignupClick = () => this.props.toggleSignupModal()
     handleSigninClick = () => this.props.toggleSigninModal()
     handleSignOutClick = () => this.props.signOut();
-    handleProfileClick = () => {
-        return <Redirect to="/profile" />
-    }
+    handleProfileClick = () => this.props.changeLocation('profile')
 
     render() { 
 

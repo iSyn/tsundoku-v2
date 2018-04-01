@@ -19,8 +19,15 @@ class LandingPage extends Component {
 
     render() { 
 
-        let { redirect } = this.props
-        if (redirect) return <Redirect to="/books" />;
+        let { location } = this.props
+        console.log('location', location)
+        if (location === 'profile') {
+            return <Redirect to="/profile" />
+        } else if (location === 'books') {
+            return <Redirect to="/books" />
+        } else if (location === 'home') {
+            // return <Redirect to="/" />
+        }
 
         return (  
             <div className='landing-page'>
@@ -47,10 +54,12 @@ class LandingPage extends Component {
                         toggleSignupModal={this.props.toggleSignupModal} 
                         toggleSigninModal={this.props.toggleSigninModal} 
                         signOut={this.props.signOut} 
+                        changeLocation={this.props.changeLocation}
                     /> 
                 }
                 <Header 
                     toggleHamburgerMenu={this.props.toggleHamburgerMenu}
+                    changeLocation={this.props.changeLocation}
                 />
                 <div className='input-container'>
                     <p>Search for a book you <span className='text-color'>probably</span> won't read...</p>

@@ -18,6 +18,16 @@ class SearchPage extends Component {
 
     render() { 
 
+        let { location } = this.props;
+        console.log("location", location);
+        if (location === "profile") {
+          return <Redirect to="/profile" />;
+        } else if (location === "books") {
+        //   return <Redirect to="/books" />;
+        } else if (location === "home") {
+          return <Redirect to="/" />
+        }
+
         if (this.props.searchResults.length === 0) {
             return <Redirect to="/" />
         }
@@ -53,6 +63,7 @@ class SearchPage extends Component {
                 <Header 
                     showHamburgerMenu={this.props.showHamburgerMenu}
                     toggleHamburgerMenu={this.props.toggleHamburgerMenu}
+                    changeLocation={this.props.changeLocation}
                 />
                 <div className="search-container">
                     <form onSubmit={this.handleSubmit}>

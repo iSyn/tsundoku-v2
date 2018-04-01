@@ -7,12 +7,12 @@ class ProfilePage extends Component {
     render() { 
 
         if (!this.props.user) {
-        //   return <Redirect to="/" />;
+          return <Redirect to="/" />;
         }
 
         return (  
 
-            <div class='profile-page'>
+            <div className='profile-page'>
                 <h1>Profile page</h1>
             </div>
         )

@@ -12,7 +12,6 @@ import React, { Component } from 'react';
 import './Tsundoku.css';
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Redirect } from "react-router-dom"
 import axios from "axios";
 
 import LandingPage from './components/LandingPage'
@@ -28,7 +27,8 @@ class Tsundoku extends Component {
         notifications: [],
         selected: null,
         searching: false,
-        redirect: false,
+        location: null,
+
         showHamburgerMenu: false,
         showSignupModal: false,
         showSigninModal: false,
@@ -45,7 +45,7 @@ class Tsundoku extends Component {
 
         await axios.get(URL).then((res) => {
             let searchResults = res.data
-            this.setState({ searchResults, redirect: true })
+            this.setState({ searchResults, location: 'books' })
         })
 
         this.setState({ searching: false })
@@ -150,6 +150,11 @@ class Tsundoku extends Component {
         })
     }
 
+    changeLocation = (location) => {
+        console.log('CHANGING FROM MAIN', location)
+        this.setState({ location })
+    }
+
     render() {
         
         const LandingPageComponent = () => {
@@ -157,7 +162,7 @@ class Tsundoku extends Component {
                 <LandingPage 
                     searchFor={this.searchFor.bind(this)}
                     searching={this.state.searching}
-                    redirect={this.state.redirect}
+                    location={this.state.location}
                     //
                     showSignupModal={this.state.showSignupModal}
                     showSigninModal={this.state.showSigninModal}
@@ -176,6 +181,7 @@ class Tsundoku extends Component {
 
                     notifications={this.state.notifications}
                     removeNotification={this.removeNotification.bind(this)}
+                    changeLocation={this.changeLocation.bind(this)}
                 />
             )
         }
@@ -197,6 +203,9 @@ class Tsundoku extends Component {
                     signOut={this.signOut.bind(this)}
                     signIn={this.signIn.bind(this)}
                     user={this.state.user}
+
+                    location={this.state.location}
+                    changeLocation={this.changeLocation.bind(this)}
                 />
             )
         }

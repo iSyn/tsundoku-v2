@@ -5,11 +5,16 @@ class Header extends Component {
     handleClick = () => {
         this.props.toggleHamburgerMenu()
     }
+
+    handleHeaderClick = () => {
+        this.props.changeLocation("home")
+        console.log('clicked')
+    }
     
     render() { 
         return (  
-            <header>
-                <h1><a href="http://localhost:3000">TSUNDOKU</a></h1>
+            <header onClick={this.handleHeaderClick}>
+                <h1>TSUNDOKU</h1>
                 <i onClick={this.handleClick} className='fa fa-bars fa-1x'></i>
             </header>
         )
