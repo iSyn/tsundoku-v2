@@ -8,6 +8,13 @@ import HamburgerMenu from './HamburgerMenu'
 
 class SearchPage extends Component {
 
+    handleSubmit = (e) => {
+        e.preventDefault();
+        let input = document.querySelector('input')
+        this.props.searchFor(input.value)
+        input.value = ""
+    }
+
     render() { 
 
         if (this.props.searchResults.length === 0) {
@@ -31,7 +38,7 @@ class SearchPage extends Component {
                     toggleHamburgerMenu={this.props.toggleHamburgerMenu}
                 />
                 <div className="search-container">
-                    <form>
+                    <form onSubmit={this.handleSubmit}>
                         <input type="text" placeholder='Search for something new...'/>
                         <i className='fa fa-search fa-2x'></i>
                     </form>

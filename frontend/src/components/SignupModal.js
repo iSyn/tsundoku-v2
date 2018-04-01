@@ -15,12 +15,15 @@ class SignupModal extends Component {
         if (password.length > 0) {
             if (password === confirmPassword) {
                 this.props.createNewUser(newUser)
+                document.querySelector('.input-username').value = ""
+                document.querySelector(".input-password").value = ""
+                document.querySelector(".input-confirm-password").value = ""
+
             } else {
                 document.querySelector(".form--password").style.borderColor = 'red'
                 document.querySelector(".form--confirmPassword").style.borderColor = "red";
             }
         }
-
     }
 
     render() { 

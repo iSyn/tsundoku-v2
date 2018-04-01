@@ -11,7 +11,9 @@ class Tsundoku extends Component {
 
     state = {
         user: null,
+        userId: null,
         searchResults: [],
+        notifications: [],
         selected: {},
         searching: false,
         redirect: false,
@@ -57,8 +59,75 @@ class Tsundoku extends Component {
     }
 
     createNewUser = async (newUser) => {
-        await axios.post("/users", newUser)
-        this.setState({ showSignupModal: false })
+        await axios.post("/users", newUser).then((res) => {
+            let notifications = this.state.notifications;
+            if (res.data) {
+                notifications.push({
+                    type: 'success',
+                    message: `Account Created. Welcome ${newUser.username}`
+                })
+                this.setState({
+                    showSignupModal: false,
+                    user: newUser.username,
+                    userId: res.data.user_id
+                })
+            } else {
+                notifications.push({
+                    type: 'error',
+                    message: 'Username already exists'
+                })
+                this.setState({
+                    notifications,
+                })
+            }
+        })
+    }
+
+    signIn = async (username, password) => {
+        await axios.get(`/users/username/${username}`).then((res) => {
+            let notifications = this.state.notifications;
+            if (res.data.password === password) {
+                notifications.push({
+                    type: 'success',
+                    message: `Sign in successful. Welcome ${username}`
+                })
+
+                this.setState({
+                    user: res.data.username,
+                    userId: res.data.user_id,
+                    showSigninModal: false,
+                    notifications
+                })
+            } else {
+                notifications.push({
+                    type: 'error',
+                    message: 'Incorrect username or password'
+                })
+                this.setState({ notifications })
+            }
+        })
+    }
+
+    signOut = () => {
+
+        let notifications = this.state.notifications
+        notifications.push({
+            type: 'info',
+            message: 'You have signed out successfully'
+        })
+
+        this.setState({
+            showHamburgerMenu: false,
+            user: null,
+            userId: null
+        })
+    }
+
+    removeNotification = (index) => {
+        let notifications = this.state.notifications
+        console.log('removing notification where index is: ', index)
+        notifications.splice(index, 1)
+        this.setState({ notifications })
     }
 
     render() {
@@ -69,13 +138,23 @@ class Tsundoku extends Component {
                     searchFor={this.searchFor.bind(this)}
                     searching={this.state.searching}
                     redirect={this.state.redirect}
-                    showHamburgerMenu={this.state.showHamburgerMenu}
+                    //
+
                     showSignupModal={this.state.showSignupModal}
                     showSigninModal={this.state.showSigninModal}
-                    toggleHamburgerMenu={this.toggleHamburgerMenu.bind(this)}
+                    showHamburgerMenu={this.state.showHamburgerMenu}
+
                     toggleSignupModal={this.toggleSignupModal.bind(this)}
                     toggleSigninModal={this.toggleSigninModal.bind(this)}
+                    toggleHamburgerMenu={this.toggleHamburgerMenu.bind(this)}
+                    //
                     createNewUser={this.createNewUser}
+                    signOut={this.signOut.bind(this)}
+                    signIn={this.signIn.bind(this)}
+                    user={this.state.user}
+                    //
+                    notifications={this.state.notifications}
+                    removeNotification={this.removeNotification.bind(this)}
                 />
             )
         }
@@ -83,6 +162,7 @@ class Tsundoku extends Component {
         const SearchPageComponent = () => {
             return (
                 <SearchPage 
+                    searchFor={this.searchFor.bind(this)}
                     searchResults={this.state.searchResults}
                     setSelected={this.setSelected.bind(this)}
                     showHamburgerMenu={this.state.showHamburgerMenu}

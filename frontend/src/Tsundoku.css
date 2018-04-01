@@ -147,11 +147,11 @@ header i:active {
     left: 50%;
     transform: translateX(-50%);
     /* padding: 20px 0; */
-    width: 60%;
+    width: 816px;
 }
 
 .search-container form {
-    margin: 20px;
+    margin: 20px 0;
     position: relative;
     width: 100%;
     display: flex;
@@ -182,17 +182,25 @@ header i:active {
 .books-container {
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
+    justify-content: space-between;
     height: 600px;
     overflow: auto;
+    padding: 0 5px 5px 5px;
 }
 
 .book {
     background-size: 100% 100%;
     height: 210px;
     width: 150px;
-    margin: 5px;
+    margin-bottom: 10px;
     cursor: pointer;
+    box-shadow: 0 0 3px #222;
+    transition: all .3s;
+}
+
+.book:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 6px #222;
 }
 
 .hamburger-menu {
@@ -336,13 +344,6 @@ header i:active {
     background: none;
 }
 
-.form-input-container i {
-    /* height: 45px;
-    width: 45px;
-    padding: 7px 10px;
-    border-right: 2px solid #C0B283; */
-}
-
 .form-input-container div {
     border-right: 2px solid #C0B283;
     height: 100%;
@@ -350,4 +351,41 @@ header i:active {
     padding: 10px;
     display: flex;
     justify-content: center;
+}
+
+.notification {
+    position: absolute;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding: 5px 20px;
+    color: #F4f4f4;
+    top: -100%;
+    width: 100%;
+    z-index: 4;
+    background: #d93636;
+    font-family: 'IBM Plex Serif';
+    /* box-shadow: 0 0 10px #545454; */
+    font-size: 20px;
+    animation: notif-drop .5s forwards;
+}
+
+.notification p { flex-grow: 1;}
+
+@keyframes notif-drop {
+    from {
+        top: -100%;
+    }
+    to {
+        top: 0px;
+    }
+}
+
+@keyframes notif-up {
+    from {
+        top: 0px;
+    }
+    to {
+        top: -100%;
+    }
 }

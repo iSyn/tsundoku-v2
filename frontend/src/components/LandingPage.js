@@ -7,6 +7,7 @@ import HamburgerMenu from './HamburgerMenu'
 import Header from './Header'
 import SignupModal from "./SignupModal";
 import SigninModal from './SigninModal';
+import NotificationContainer from './NotificationContainer'
 
 class LandingPage extends Component {
 
@@ -23,11 +24,26 @@ class LandingPage extends Component {
 
         return (  
             <div className='landing-page'>
+                <NotificationContainer notifications={this.props.notifications} removeNotification={this.props.removeNotification}/>
                 { this.props.showSignupModal && 
                     <SignupModal toggleSignupModal={this.props.toggleSignupModal} createNewUser={this.props.createNewUser}/> 
                 }
-                { this.props.showSigninModal && <SigninModal toggleSigninModal={this.props.toggleSigninModal}/> }
-                { this.props.showHamburgerMenu && <HamburgerMenu toggleSignupModal={this.props.toggleSignupModal} toggleSigninModal={this.props.toggleSigninModal} /> }
+                { 
+                    this.props.showSigninModal && 
+                    <SigninModal 
+                        toggleSigninModal={this.props.toggleSigninModal}
+                        signIn={this.props.signIn}
+                    /> 
+                }
+                { 
+                    this.props.showHamburgerMenu && 
+                    <HamburgerMenu 
+                        user={this.props.user} 
+                        toggleSignupModal={this.props.toggleSignupModal} 
+                        toggleSigninModal={this.props.toggleSigninModal} 
+                        signOut={this.props.signOut} 
+                    /> 
+                }
                 <Header 
                     toggleHamburgerMenu={this.props.toggleHamburgerMenu}
                 />
