@@ -13,8 +13,8 @@ class Header extends Component {
     
     render() { 
         return (  
-            <header onClick={this.handleHeaderClick}>
-                <h1>TSUNDOKU</h1>
+            <header>
+                <h1><span onClick={this.handleHeaderClick}>TSUNDOKU</span></h1>
                 <i onClick={this.handleClick} className='fa fa-bars fa-1x'></i>
             </header>
         )

@@ -17,16 +17,14 @@ class BookModal extends Component {
                     <div className="book-info">
                         <h1>{info.title}</h1>
                         <hr/>
-                        <p>Written by: {info.authors.map((author) => author + " ")}</p>
+                        { info.authors && <p>Written by: {info.authors.map((author) => author + " ")}</p> }
                         <hr/>
                         { this.props.user ? <button>TSUNDOKU IT</button> : <button>SIGN IN TO SAVE</button> }
                         <p>{info.description}</p>
                         <hr/>
-                        {
-                            info.averageRating > 0 && <p>Average Rating: {info.averageRating} stars from {info.ratingsCount} reviews</p>
-                        }
-
-                        <p>Tags: {info.categories.map((category) => category + " ")}</p>
+                        { info.averageRating > 0 && <p>Average Rating: {info.averageRating} stars from {info.ratingsCount} reviews</p> }
+                        { info.categories && <p>Tags: {info.categories.map((category) => category + " ")}</p>}
+                        
                     </div>
                 </div>
             </div>

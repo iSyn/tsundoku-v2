@@ -1,10 +1,12 @@
 /*
 
-Questions:
+QUESTIONS:
 - Integer on SQL
 - Testing basic route doesnt even work
 - Why doesnt <Redirct/> work on HamburgerMenu.js
 
+THINGS TO FIX:
+- App breaks when searching for somethng that doesnt exist
 */
 
 
@@ -214,6 +216,12 @@ class Tsundoku extends Component {
             return (
                 <ProfilePage 
                     user={this.state.user}
+                    //
+                    toggleHamburgerMenu={this.toggleHamburgerMenu.bind(this)}
+                    toggleSignupModal={this.toggleSignupModal.bind(this)}
+                    toggleSigninModal={this.toggleSigninModal.bind(this)}
+                    closeAllModals={this.closeAllModals.bind(this)}
+
                 />
             )
         }

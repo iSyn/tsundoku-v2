@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 
 import { Redirect } from 'react-router-dom'
 
+import Header from './Header';
+import SavedBooks from './SavedBooks'
+
 class ProfilePage extends Component {
     state = {}
     render() { 
@@ -13,7 +16,10 @@ class ProfilePage extends Component {
         return (  
 
             <div className='profile-page'>
-                <h1>Profile page</h1>
+                <Header />
+                <div className="profile-page-content">
+                    <SavedBooks />
+                </div>
             </div>
         )
     }

@@ -12,7 +12,7 @@ a {
     text-decoration: none;
 }
 
-.landing-page, .search-page {
+.landing-page, .search-page, .profile-page {
     position: relative;
     min-height: 100vh;
     min-width: 100vw;
@@ -45,8 +45,9 @@ header {
 
 header h1 {
     flex-grow: 1;
-    cursor: pointer;
 }
+
+header h1 span { cursor: pointer; }
 
 header i {
     cursor: pointer;
@@ -469,4 +470,42 @@ button:hover {
 
 button:active {
     filter: brightness(.9);
+}
+
+.profile-page {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.profile-page-content {
+    flex-grow: 1;
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 20px;
+}
+
+.saved-books {
+    width: 60%;
+    box-shadow: 0 2px 20px #545454;
+    border-radius: 10px;
+    color: #545454;
+}
+
+.saved-books-header {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    padding: 10px;
+    font-size: 20px;
+    border-bottom: 2px solid #545454;
+    font-family: 'IBM Plex Serif';
+}
+
+.saved-books-header p { flex-grow: 1; }
+.saved-books-header input {
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    outline: none;
 }
