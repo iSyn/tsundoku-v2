@@ -222,6 +222,9 @@ class Tsundoku extends Component {
                     toggleSigninModal={this.toggleSigninModal.bind(this)}
                     closeAllModals={this.closeAllModals.bind(this)}
 
+                    location={this.state.location}
+                    changeLocation={this.changeLocation.bind(this)}
+
                 />
             )
         }

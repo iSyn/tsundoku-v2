@@ -8,7 +8,6 @@ class Header extends Component {
 
     handleHeaderClick = () => {
         this.props.changeLocation("home")
-        console.log('clicked')
     }
     
     render() { 
