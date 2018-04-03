@@ -10,12 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @EnableEurekaClient
 @RestController
 public class BooksApiApplication {
-
-	@RequestMapping("/")
-	public String home() {
-		return "books api home route";
-	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(BooksApiApplication.class, args);
 	}
