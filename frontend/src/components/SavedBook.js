@@ -10,20 +10,32 @@ class SavedBook extends Component {
         this.props.setSelected(book)
     }
 
-    handleCheckboxChange = (e) => this.props.toggleCompleted(this.props.index)
+    // handleCheckboxChange = (e) => this.props.toggleCompleted(this.props.index)
+    handleCheckboxChange = () => {
+        this.props.toggleCompleted(this.props.book.book_id)
+    }
 
     render() { 
 
         let book = this.props.book
+        let opacity = 1
+        if (this.props.book.completed === true) {
+            opacity = .4
+        }
+
+        console.log(book.book_id, "completed:", book.completed)
 
         return (
             
-            <div className='saved-book'>
+
+            <div className='saved-book' style={{opacity: opacity}}>
                 <p onClick={this.handleBookClick} className='saved-book__date-added'>{book.date_added}</p>
                 <p onClick={this.handleBookClick} className='saved-book__title'>{book.volumeInfo.title}</p>
                 <div className='saved-book__completed'>
-                    { book.completed === false && <input onChange={this.handleCheckboxChange} type="checkbox"/> }
-                    { book.completed === true && <input onChange={this.handleCheckboxChange} type="checkbox" checked="true"/> }
+                    { 
+                        book.completed === true ? <input onChange={this.handleCheckboxChange} type="checkbox" checked={true}/> :
+                        <input onChange={this.handleCheckboxChange} type="checkbox" checked={false}/>
+                    }
                 </div>
             </div>
         )

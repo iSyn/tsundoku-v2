@@ -10,19 +10,17 @@ class SavedBooks extends Component {
 
     render() { 
 
-        let sortedBooks = this.props.savedBooks
-            .sort((book1, book2) => new Date(book2.date_added) - new Date(book1.date_added))
-            
-            
+        let sortedBooks = this.props.savedBooks.sort((book1, book2) => new Date(book2.date_added) - new Date(book1.date_added))
 
         let showCompleted = this.props.showCompleted;
+        
         if (showCompleted === false) {
             sortedBooks = sortedBooks.filter(book => book.completed === false);
+        } else {
+            sortedBooks.sort((book1, book2) => {
+                return book2.completed === book1.completed ? 0 : book2.completed ? -1 : 1;
+            })
         }
-
-        
-
-
 
         return (  
             <div className='saved-books'>

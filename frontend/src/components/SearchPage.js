@@ -5,7 +5,9 @@ import Header from './Header';
 import Book from './Book';
 import HamburgerMenu from './HamburgerMenu'
 import BookModal from './BookModal'
-
+import SigninModal from './SigninModal'
+import SignupModal from "./SignupModal";
+import NotificationContainer from './NotificationContainer'
 
 class SearchPage extends Component {
 
@@ -43,11 +45,30 @@ class SearchPage extends Component {
 
         return (  
             <div className='search-page'>
+                <NotificationContainer notifications={this.props.notifications} removeNotification={this.props.removeNotification}/>
+                { this.props.showSigninModal && 
+                    <SigninModal 
+                        closeAllModals={this.props.closeAllModals}
+                        toggleSigninModal={this.props.toggleSigninModal}
+                        signIn={this.props.signIn}
+                    /> 
+                }
+                { this.props.showSignupModal && 
+                    <SignupModal 
+                        closeAllModals={this.props.closeAllModals} 
+                        toggleSignupModal={this.props.toggleSignupModal} 
+                        createNewUser={this.props.createNewUser}
+                    /> 
+                }
                 { this.props.selected && 
                     <BookModal 
                         selected={this.props.selected}
                         closeAllModals={this.props.closeAllModals}
                         user={this.props.user}
+
+                        toggleSignupModal={this.props.toggleSignupModal}
+                        toggleSigninModal={this.props.toggleSigninModal}
+                        closeAllModals={this.props.closeAllModals}
                         
                         saveBook={this.props.saveBook}
                     /> 

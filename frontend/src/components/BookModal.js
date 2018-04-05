@@ -19,6 +19,10 @@ class BookModal extends Component {
         this.props.saveBook(book)
     }
 
+    handleSigninClick = () => {
+        this.props.toggleSigninModal()
+    }
+
     handleCompletedClick = () => {
         this.props.toggleCompleted(this.props.selected.index)
     }
@@ -40,7 +44,7 @@ class BookModal extends Component {
 
                         {/* SEARCH PAGE */}
                         { this.props.location !== "profile" && this.props.user && <button onClick={this.handleSaveClick}>TSUNDOKU IT</button> }
-                        { this.props.location !== "profile" && !this.props.user && <button>SIGN IN TO SAVE</button> }
+                        { this.props.location !== "profile" && !this.props.user && <button onClick={this.handleSigninClick}>SIGN IN TO SAVE</button> }
 
                         {/* PROFILE PAGE */}
                         { this.props.location === "profile" && 

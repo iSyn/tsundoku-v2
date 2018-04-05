@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom'
 import Header from './Header';
 import SavedBooks from './SavedBooks'
 import ProfileStatus from './ProfileStatus'
+import ProfileSettings from './ProfileSettings'
 import BookModal from './BookModal'
 import HamburgerMenu from "./HamburgerMenu";
 
@@ -66,6 +67,9 @@ class ProfilePage extends Component {
                     <div className="profile-page-right">
                         <ProfileStatus 
                             savedBooks={this.props.savedBooks}
+                        />
+                        <ProfileSettings 
+                            user={this.props.user}
                             dateCreated={this.props.dateCreated}
                         />
                     </div>

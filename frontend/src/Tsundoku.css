@@ -287,7 +287,7 @@ header i:active {
 }
 
 .signup-modal {
-    z-index: 4;
+    z-index: 6;
     position: relative;
     width: 400px;
     /* height: 500px; */
@@ -406,9 +406,10 @@ header i:active {
     z-index: 4;
     background: #d93636;
     font-family: 'IBM Plex Serif';
-    /* box-shadow: 0 0 10px #545454; */
+    box-shadow: 0 0 5px #545454;
     font-size: 20px;
     animation: notif-drop .5s forwards;
+    /* opacity: 0.9; */
 }
 
 .notification p { flex-grow: 1;}
@@ -554,9 +555,10 @@ button:active {
 
 .profile-status {
     box-shadow: 0 2px 10px #545454;
-    border-radius: 10px;
+    border-radius: 5px;
     color: #545454;
     animation: fadein-up 1.5s forwards;
+    margin-bottom: 6%;
 }
 
 .stats {
@@ -566,6 +568,13 @@ button:active {
 .stats p {
     font-family: 'IBM Plex Serif';
     padding: 5px;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+}
+
+.stats p span {
+    flex-grow: 1;
 }
 
 .stats p:nth-child(even) {
@@ -604,6 +613,7 @@ button:active {
 
 .saved-book__date-added {
     width: 120px;
+    min-width: 120px;
     text-align: center;
 }
 
@@ -613,6 +623,7 @@ button:active {
 
 .saved-book__completed {
     width: 100px;
+    min-width: 100px;
     text-align: center;
 }
 

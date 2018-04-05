@@ -7,6 +7,10 @@ QUESTIONS:
 
 THINGS TO FIX:
 - App breaks when searching for somethng that doesnt exist
+
+THINGS TO ADD:
+- in profile page, add another component for settings where it displays 
+username and allows for password/username updates
 */
 
 
@@ -62,7 +66,7 @@ class Tsundoku extends Component {
 
         await axios.get(URL).then((res) => {
             let searchResults = res.data
-            this.setState({ searchResults, location: 'books' })
+            this.setState({ searchResults, location: 'books', showHamburgerMenu: false })
         })
 
         this.setState({ searching: false })
@@ -173,18 +177,29 @@ class Tsundoku extends Component {
         })
     }
 
-    toggleCompleted = (book_index) => {
-        let savedBooks = this.state.savedBooks
-        let date = new Date().toLocaleDateString();
+    // toggleCompleted = (book_index) => {
+    //     let savedBooks = this.state.savedBooks
+    //     let date = new Date().toLocaleDateString();
     
-        if (!savedBooks[book_index].completed) {
-            savedBooks[book_index].completed = !savedBooks[book_index].completed;
-            savedBooks[book_index].date_completed = date
-        } else {
-            savedBooks[book_index].completed = false
-            savedBooks[book_index].date_completed = null
+    //     if (!savedBooks[book_index].completed) {
+    //         savedBooks[book_index].completed = !savedBooks[book_index].completed;
+    //         savedBooks[book_index].date_completed = date
+    //     } else {
+    //         savedBooks[book_index].completed = false
+    //         savedBooks[book_index].date_completed = null
+    //     }
+    //     this.setState({ savedBooks, selected: null })
+    // }
+
+    toggleCompleted = (book_id) => {
+        let savedBooks = this.state.savedBooks
+        for (let i = 0; i < savedBooks.length; i++) {
+            if (savedBooks[i].book_id === book_id) {
+                savedBooks[i].completed = !savedBooks[i].completed
+            }
         }
-        this.setState({ savedBooks, selected: null })
+        this.setState({ savedBooks })
+        console.log(savedBooks)
     }
 
     toggleShowCompleted = () => {
@@ -252,12 +267,17 @@ class Tsundoku extends Component {
     saveBook = async (book) => {
         let savedBooks = [...this.state.savedBooks]
         savedBooks.push(book)
-        this.setState({ savedBooks, selected: null })
+        let notifications = [...this.state.notifications]
+        notifications.push({
+            type: 'success',
+            message: `Saved the book ${book.volumeInfo.title}`
+        })
+        this.setState({ savedBooks, selected: null, notifications })
         // await axios.post('/books', book)
     }
 
     changeLocation = (location) => {
-        this.setState({ location, showHamburgerMenu: false })
+        this.setState({ location, showHamburgerMenu: false, notifications: [] })
     }
 
     render() {
@@ -300,6 +320,9 @@ class Tsundoku extends Component {
                     selected={this.state.selected}
                     showHamburgerMenu={this.state.showHamburgerMenu}
 
+                    showSignupModal={this.state.showSignupModal}
+                    showSigninModal={this.state.showSigninModal}
+
                     toggleHamburgerMenu={this.toggleHamburgerMenu.bind(this)}
                     toggleSignupModal={this.toggleSignupModal.bind(this)}
                     toggleSigninModal={this.toggleSigninModal.bind(this)}
@@ -311,6 +334,9 @@ class Tsundoku extends Component {
 
                     location={this.state.location}
                     changeLocation={this.changeLocation.bind(this)}
+
+                    notifications={this.state.notifications}
+                    removeNotification={this.removeNotification.bind(this)}
 
                     saveBook={this.saveBook.bind(this)}
                 />

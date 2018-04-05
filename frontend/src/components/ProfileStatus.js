@@ -6,7 +6,6 @@ class ProfileStatus extends Component {
         let savedBooks = this.props.savedBooks.length
         let booksCompleted = this.props.savedBooks.filter((book) => book.completed).length
         let booksInProgress = this.props.savedBooks.filter((book) => !book.completed).length
-        let dateCreated = new Date(this.props.dateCreated).toLocaleDateString()
 
 
         return (  
@@ -16,10 +15,9 @@ class ProfileStatus extends Component {
                     <p>&nbsp; Status</p>
                 </div>
                 <div className="stats">
-                    <p>Books Saved: {savedBooks}</p>
-                    <p>Books Completed: {booksCompleted}</p>
-                    <p>Books in Progress: {booksInProgress}</p>
-                    <p>Account Created On: {dateCreated}</p>
+                    <p><span>Books Saved:</span> {savedBooks}</p>
+                    <p><span>Books Completed:</span> {booksCompleted}</p>
+                    <p><span>Books in Progress:</span> {booksInProgress}</p>
                 </div>
             </div>
         )
