@@ -222,47 +222,128 @@ class Tsundoku extends Component {
             { 
                 book_id: 1, 
                 user_id: 1, 
-                date_added: "4/1/2018", 
+                date_added: "3/29/2018", 
                 completed: false,
                 date_completed: null,
                 volumeInfo: {
                     title: "Cracking the Coding Interview",
-                    author: ["Gayle Laakmann McDowell"],
+                    authors: ["Gayle Laakmann McDowell"],
                     description: "Now in the 6th edition, the book gives you the interview preparation you need to get the top software developer jobs. This is a deeply technical book and focuses on the software engineering skills to ace your interview. The book includes 189 programming interview questions and answers, as well as other advice.", 
                     imageLinks: {
                         thumbnail:"http://books.google.com/books/content?id=jD8iswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
                     }
-
                 }
             }, { 
-                book_id: 2, 
+                book_id: "y3CyRurE7P4C", 
+                user_id: 1, 
+                date_added: "3/29/2018", 
+                completed: false,
+                date_completed: null,
+                volumeInfo: {
+                    title: "Fahrenheit 451",
+                    authors: ["Ray Bradbury"],
+                    description: "A totalitarian regime has ordered all books to be destroyed, but one of the book burners, Guy Montag, suddenly realizes their merit.",
+                    imageLinks: {
+                        thumbnail: "http://books.google.com/books/content?id=y3CyRurE7P4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                    }
+                }
+            }, { 
+                book_id: "S85NCwAAQBAJ",
+                user_id: 1, 
+                date_added: "3/31/2018", 
+                completed: false,
+                date_completed: null,
+                volumeInfo: {
+                    title: "It",
+                    authors: ["Stephen King"],
+                    description: "They were seven teenagers when they first stumbled upon the horror. Now they were grown-up men and women who had gone out into the big world to gain success and happiness. But none of them could withstand the force that drew them back to Derry, Maine to face the nightmare without an end, and the evil without a name.",
+                    imageLinks: {
+                        thumbnail: "http://books.google.com/books/content?id=S85NCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                    }
+                }
+            }, { 
+                book_id: "iEWAAwAAQBAJ",
                 user_id: 1, 
                 date_added: "4/1/2018", 
                 completed: false,
                 date_completed: null,
                 volumeInfo: {
-                    title: "Book 2",
-                    author: ["Gayle Laakmann McDowell"],
-                    description: "Now in the 6th edition, the book gives you the interview preparation you need to get the top software developer jobs. This is a deeply technical book and focuses on the software engineering skills to ace your interview. The book includes 189 programming interview questions and answers, as well as other advice.", 
+                    title: "Pet Sematary",
+                    authors: ["Stephen King"],
+                    description: "Don’t miss the classic tale from King of Horror and #1 New York Times bestselling author Stephen King, described by Publishers Weekly as “the most frightening novel Stephen King has ever written.” When the Creeds move into a beautiful old house in rural Maine, it all seems too good to be true: physician father, beautiful wife, charming little daughter, adorable infant son—and now an idyllic home. As a family, they’ve got it all…right down to the friendly cat. But the nearby woods hide a blood-chilling truth—more terrifying than death itself...and hideously more powerful. The Creeds are going to learn that sometimes dead is better.",
                     imageLinks: {
-                        thumbnail:"http://books.google.com/books/content?id=jD8iswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                        thumbnail: "http://books.google.com/books/content?id=iEWAAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
                     }
-
                 }
             }, { 
-                book_id: 3, 
+                book_id: "j24GMN0OtS8C",
                 user_id: 1, 
                 date_added: "4/1/2018", 
                 completed: true,
+                date_completed: "4/2/2018",
+                volumeInfo: {
+                    title: "The Hitchhiker's Guide to the Galaxy",
+                    authors: ["Douglas Adams"],
+                    description: "“Extremely funny . . . inspired lunacy . . . [and] over much too soon.”—The Washington Post Book World Seconds before the Earth is demolished to make way for a galactic freeway, Arthur Dent is plucked off the planet by his friend Ford Prefect, a researcher for the revised edition of The Hitchhiker’s Guide to the Galaxy who, for the last fifteen years, has been posing as an out-of-work actor. Together this dynamic pair begin a journey through space aided by quotes from The Hitchhiker’s Guide (“A towel is about the most massively useful thing an interstellar hitchhiker can have”) and a galaxy-full of fellow travelers: Zaphod Beeblebrox—the two-headed, three-armed ex-hippie and totally out-to-lunch president of the galaxy; Trillian, Zaphod’s girlfriend (formally Tricia McMillan), whom Arthur tried to pick up at a cocktail party once upon a time zone; Marvin, a paranoid, brilliant, and chronically depressed robot; Veet Voojagig, a former graduate student who is obsessed with the disappearance of all the ballpoint pens he bought over the years. Where are these pens? Why are we born? Why do we die? Why do we spend so much time between wearing digital watches? For all the answers stick your thumb to the stars. And don't forget to bring a towel! Praise for The Hitchhiker’s Guide to the Galaxy “A whimsical oddyssey . . . Characters frolic through the galaxy with infectious joy.”—Publishers Weekly “Irresistable!”—The Boston Globe",
+                    imageLinks: {
+                        thumbnail: "http://books.google.com/books/content?id=iEWAAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                    }
+                }
+            }, { 
+                book_id: "uyr8BAAAQBAJ",
+                user_id: 1, 
+                date_added: "4/1/2018", 
+                completed: true,
+                date_completed: "4/2/2018",
+                volumeInfo: {
+                    title: "1984",
+                    authors: ["George Orwell"],
+                    description: "George Orwell's dystopian masterpiece, Nineteen Eighty-Four is perhaps the most pervasively influential book of the twentieth century, making famous Big Brother, newspeak and Room 101. 'Who controls the past controls the future: who controls the present controls the past'",
+                    imageLinks: {
+                        thumbnail: "http://books.google.com/books/content?id=uyr8BAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                    }
+                }
+            }, { 
+                book_id: "nkalO3OsoeMC",
+                user_id: 1, 
+                date_added: "4/1/2018", 
+                completed: true,
+                date_completed: "4/2/2018",
+                volumeInfo: {
+                    title: "Animal Farm",
+                    authors: ["George Orwell"],
+                    description: "George Orwell’s famous satire of the Soviet Union, in which “all animals are equal but some animals are more equal than others.”",
+                    imageLinks: {
+                        thumbnail: "http://books.google.com/books/content?id=nkalO3OsoeMC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                    }
+                }
+            }, { 
+                book_id: "nEOlswEACAAJ",
+                user_id: 1, 
+                date_added: "4/2/2018", 
+                completed: false,
                 date_completed: null,
                 volumeInfo: {
-                    title: "Book 3",
-                    author: ["Gayle Laakmann McDowell"],
-                    description: "Now in the 6th edition, the book gives you the interview preparation you need to get the top software developer jobs. This is a deeply technical book and focuses on the software engineering skills to ace your interview. The book includes 189 programming interview questions and answers, as well as other advice.", 
+                    title: "Java Programming For Dummies",
+                    authors: ["Donald J. Koosis", "David Koosis"],
+                    description: `"Java Programming "Cheat Sheet" Inside! Everything You Need to Create Java 2 Applets! If you want to use Java 2 — and not just read about it — this is the book for you. Find out how to add oomph and interactivity to your Web site with some nifty applets, provide a friendly user interface to your corporate database, or develop games. Java™ Programming For Dummies®, 3rd Edition, brings you all the practical information and sample code you need to get programming in Java 2 — right away. Start Programming Today! CD-ROM Includes: Java 2: Create your own Java 2 applets with Java 2 development tools from Sun Microsystems MindSpring Internet Access Microsoft's popular Web browser Trial version of JBuilder Professional 2 Sample applets created by people from around the world — including Ticker Tape, Calendar, Sprite, Quizem, JavaBots, Shopping Cart, and more! Shareware programs are fully functional, free trial versions of copyrighted programs. If you like particular programs, register with their authors for a nominal fee and receive licenses, enhanced versions, and technical support. Freeware programs are free, copyrighted games, applications, and utilities. You can copy them to as many PCs as you like — free — but they have no technical support. System Requirements: 486 or faster PC with Windows 95, 98, or NT; or 68040 or PowerPC Mac with System 7.5 or later; SPARC Solaris 2.3 or 2.4, or X86 Solaris 2.5; 16 MB RAM; CD-ROM drive double-speed (2x) or faster. Inside, find helpful advice on how to: Master the latest Internet standards in Java 2 Write Java 2 code you can use again and again in different applications Produce dynamic Web pages that respond to user input Create sprites, bots, and other applets that can run on all kinds of computers — PCs, Macs, and UNIX workstations Transfer mini programs without losing or corrupting data Develop multi-user games you can play across the Internet"`,
                     imageLinks: {
-                        thumbnail:"http://books.google.com/books/content?id=jD8iswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                        thumbnail: "http://books.google.com/books/content?id=nEOlswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
                     }
-
+                }
+            }, { 
+                book_id: "fIgw1X5oa7gC",
+                user_id: 1, 
+                date_added: "4/2/2018", 
+                completed: true,
+                date_completed: "4/2/2018",
+                volumeInfo: {
+                    title: "Depression For Dummies",
+                    authors: ["Laura L. Smith", "Charles H. Elliott"],
+                    description: `""What do you have to be depressed about?" Bet you've heard that one before. Or how about, "You're depressed? Just get over it!" Easier said than done, right? Or here's a favorite, "They have a pill for that now, you know." Unfortunately, such naïve armchair psychology rarely works for someone suffering from the very real plight of depression. All it does is seek to trivialize depression and characterize depressed people as "whiners" who have nothing better to do than to "complain about their lives." But the truth is, depression is a very real problem. In fact, the World Health Organization estimates that, on any given day, 121 million people worldwide suffer from depression. And depression rates continue to increase – for example, kids exhibit depression at nearly ten times the rate of previous generations. Theories abound as to why depression rates are increasing, but regardless of the cause, this scourge continues to rob its victims of happiness, joy, and the capacity to give and receive love. So why Depression For Dummies, when there's already a glut of self-help books on the market peddling so-called cures and remedies for depression? Because this book satisfies the need for a straight-talking, no-nonsense resource on depression. The only agenda of Depression For Dummies is to present you with the facts on depression and explain the options for dealing with it. Rest assured, this is no infomercial in a yellow and black cover. Here's just a sampling of what you'll find in Depression For Dummies: Demystifying the types of depression Discovering what goes on in the body of a depressed person Detecting and diagnosing depression Seeking help through therapy and medication Modifying depressed behavior and solving life's headaches Dealing with depression resulting from grief and relationship issues Cutting through the hype of alternative treatments for depression Moving beyond depression: Avoiding relapses and pursuing a happy life Top Ten lists on getting rid of a your bad mood and helping your kids and other family members out of depression So, whatever your level of depression – whether you suffer from occasional bouts or you find yourself seriously debilitated by depression – Depression For Dummies can give you the insight and tools you need to once again find enjoyment and happiness in life. All it takes is one step."`,
+                    imageLinks: {
+                        thumbnail: "http://books.google.com/books/content?id=fIgw1X5oa7gC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                    }
                 }
             },
         );
@@ -340,6 +421,7 @@ class Tsundoku extends Component {
                     toggleSigninModal={this.toggleSigninModal.bind(this)}
                     closeAllModals={this.closeAllModals.bind(this)}
 
+                    createNewUser={this.createNewUser}
                     signOut={this.signOut.bind(this)}
                     signIn={this.signIn.bind(this)}
                     user={this.state.user}

@@ -12,7 +12,7 @@ class ProfileSettings extends Component {
                     <p>&nbsp; Settings</p>
                 </div>
                 <div className="stats">
-                    <p><span>User:</span> {this.props.user} &nbsp;<i className='fa fa-pencil fa-1x'></i></p>
+                    <p><span>Username:</span> {this.props.user} &nbsp;<i className='fa fa-pencil fa-1x'></i></p>
                     <p><span>Password:</span> ******* &nbsp;<i className='fa fa-pencil fa-1x'></i></p>
                     <p><span>Account Created On:</span> {dateCreated}</p>
                 </div>

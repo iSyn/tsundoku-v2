@@ -142,11 +142,6 @@ header i:active {
     transition: all .2s;
 }
 
-.input-container form i:hover {
-    transform: scaleX(-1);
-    filter: FlipH;
-}
-
 ::placeholder {
     color: #545454;
     font-family: 'Playfair Display';
@@ -296,9 +291,12 @@ header i:active {
     top: 50%;
     transform: translate(-50%, -50%);
     animation: fallin .3s forwards;
-    box-shadow: 0 0 60px #C0B283;
+    /* box-shadow: 0 0 60px #C0B283; */
+    box-shadow: 0 0px 10px #222;
     font-family: 'IBM Plex Serif';
     color: #C0B283;
+    border: 2px solid white;
+
 }
 
 @keyframes fallin {
@@ -351,16 +349,17 @@ header i:active {
     width: 100%;
     height: 80px;
     background: #82a8c0;
-    border-bottom: 3px solid #2f536a;
+    border-bottom: 4px solid #7194aa;
     font-family: 'IBM Plex Serif';
     color: white;
     outline: none;
     font-size: 30px;
     cursor: pointer;
+    transition: filter .2s;
 }
 
 .signup-modal form button:hover {
-   filter: contrast(120%);
+   filter: contrast(150%);
 }
 
 .signup-modal form button:active {
@@ -521,6 +520,7 @@ button:active {
     background: rgba(244, 244, 244, 0.6);
     z-index: 1;
     transition: background .5s;
+    overflow: auto;
 }
 
 .saved-books:hover {
@@ -683,6 +683,54 @@ button:active {
   }
 }
 
+.chat-popup-container {
+    position: absolute;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    animation: chatPopupLeft 3s ease-in-out forwards;
+    z-index: 3;
+}
+
+.chat-popup {
+    background: #C0B283;
+    box-shadow: 0 0 5px #222;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-family: 'IBM Plex Serif';
+}
+
+.arrow-left, .arrow-right {
+    width: 0; 
+    height: 0; 
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+    border-left: 20px solid #C0B283; 
+} 
+
+.arrow-left {
+    border-left: none;
+    border-right: 20px solid #C0B283; 
+}  
+
+@keyframes left {
+    0% { left: -1000px; }
+    20% { left: 0px; }
+    50% { left: 0px; }
+    80% { left: 0px; }
+    100% { left: -1000px; }
+}
+
+@keyframes right {
+    0% { right: -1000px; }
+    20% { right: 0px; }
+    50% { right: 0px; }
+    80% { right: 0px; }
+    100% { right: -1000px; }
+}
+
 @media screen and (max-width: 1000px) {
     .profile-page-content {
         flex-flow: column nowrap;
@@ -727,6 +775,4 @@ button:active {
     .saved-books, .profile-status {
         min-width: 470px;
     }
-    
-
 }

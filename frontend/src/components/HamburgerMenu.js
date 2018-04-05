@@ -20,7 +20,7 @@ class HamburgerMenu extends Component {
                 { this.props.user === null && <h2 onClick={this.handleSigninClick}>SIGN IN</h2> }
                 { this.props.user === null && <h2 onClick={this.handleSignupClick}>SIGN UP</h2> }
                 
-                <h2>CONTACT</h2>
+                <h2><a target="_blank" href="http://synclairwang.com/professional">CONTACT</a></h2>
             </div>
         )
     }

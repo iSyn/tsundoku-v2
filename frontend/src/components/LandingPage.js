@@ -8,6 +8,7 @@ import Header from './Header'
 import SignupModal from "./SignupModal";
 import SigninModal from './SigninModal';
 import NotificationContainer from './NotificationContainer'
+import ChatPopup from './ChatPopup'
 
 class LandingPage extends Component {
 
@@ -31,6 +32,7 @@ class LandingPage extends Component {
 
         return (  
             <div className='landing-page'>
+                <ChatPopup />
                 <NotificationContainer notifications={this.props.notifications} removeNotification={this.props.removeNotification}/>
                 { this.props.showSignupModal && 
                     <SignupModal 
