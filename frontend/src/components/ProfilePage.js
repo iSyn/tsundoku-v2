@@ -60,6 +60,8 @@ class ProfilePage extends Component {
                         savedBooks={this.props.savedBooks} 
                         setSelected={this.props.setSelected} 
                         toggleCompleted={this.props.toggleCompleted}
+                        toggleShowCompleted={this.props.toggleShowCompleted}
+                        showCompleted={this.props.showCompleted}
                     />
                     <div className="profile-page-right">
                         <ProfileStatus 

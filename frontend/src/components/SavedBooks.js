@@ -3,17 +3,33 @@ import React, { Component } from 'react';
 import SavedBook from './SavedBook'
 
 class SavedBooks extends Component {
+
+    handleCheckboxChange = () => {
+        this.props.toggleShowCompleted()
+    }
+
     render() { 
 
-        console.log('saved books', this.props)
-        // let sortedBooks = this.props.savedBooks.sort((book1, book2) => book1.completed === book2.completed ? 0 : book1.completed ? -1 : 1)
+        let sortedBooks = this.props.savedBooks
+            .sort((book1, book2) => new Date(book2.date_added) - new Date(book1.date_added))
+            
+            
+
+        let showCompleted = this.props.showCompleted;
+        if (showCompleted === false) {
+            sortedBooks = sortedBooks.filter(book => book.completed === false);
+        }
+
+        
+
+
 
         return (  
             <div className='saved-books'>
                 <div className="saved-books-header">
                     <i className='fa fa-book fa-1x'></i>
                     <p>&nbsp; Books</p>
-                    <p className='show-completed'>&nbsp; Show Completed &nbsp;<input type="checkbox"/></p>
+                    <p className='show-completed'>&nbsp; Show Completed &nbsp;<input onChange={this.handleCheckboxChange} type="checkbox" checked={showCompleted}/></p>
                     <input type="text" placeholder="Search... " />
                 </div>
                 
@@ -23,7 +39,7 @@ class SavedBooks extends Component {
                     <p className='saved-book__completed'>Completed</p>
                 </div>
                 {
-                    this.props.savedBooks.map((book, index) => {
+                    sortedBooks.map((book, index) => {
                         return (
                             <SavedBook 
                                 key={index} 

@@ -54,11 +54,12 @@ class SearchPage extends Component {
                 }
                 { this.props.showHamburgerMenu && 
                     <HamburgerMenu 
-                        user={this.props.user}
-                        signOut={this.props.signOut}
-                        signIn={this.props.signIn}
-                        toggleSignupModal={this.props.toggleSignupModal}
-                        toggleSigninModal={this.props.toggleSigninModal}
+                        user={this.props.user} 
+                        toggleSignupModal={this.props.toggleSignupModal} 
+                        toggleSigninModal={this.props.toggleSigninModal} 
+                        toggleHamburgerMenu={this.props.toggleHamburgerMenu}
+                        signOut={this.props.signOut} 
+                        changeLocation={this.props.changeLocation}
                     /> 
 
                 }

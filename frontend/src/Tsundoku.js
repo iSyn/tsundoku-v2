@@ -28,6 +28,7 @@ class Tsundoku extends Component {
         dateCreated: null,
 
         savedBooks: [],
+        showCompleted: false,
 
         searchResults: [],
         notifications: [],
@@ -186,6 +187,11 @@ class Tsundoku extends Component {
         this.setState({ savedBooks, selected: null })
     }
 
+    toggleShowCompleted = () => {
+        let showCompleted = !this.state.showCompleted
+        this.setState({ showCompleted })
+    }
+
     getSavedBooks = () => {
 
         let savedBooks = [...this.state.savedBooks]
@@ -331,6 +337,8 @@ class Tsundoku extends Component {
 
                     savedBooks={this.state.savedBooks}
                     toggleCompleted={this.toggleCompleted.bind(this)}
+                    toggleShowCompleted={this.toggleShowCompleted.bind(this)}
+                    showCompleted={this.state.showCompleted}
 
                     selected={this.state.selected}
                     setSelected={this.setSelected.bind(this)}
