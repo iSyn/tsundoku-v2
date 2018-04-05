@@ -50,6 +50,7 @@ class SavedBooks extends Component {
                         )
                     })
                 }
+                { sortedBooks.length === 0 && <p className='no-books-text'>You have no books in progress... Go add some!</p> }
 
             </div>
         )

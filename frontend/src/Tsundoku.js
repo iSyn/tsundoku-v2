@@ -53,6 +53,7 @@ class Tsundoku extends Component {
         } catch (error) {
             console.log(':)')
         }
+        this.setState({ loading: false })
     }
 
     searchFor = async (search) => {
@@ -193,12 +194,19 @@ class Tsundoku extends Component {
 
     toggleCompleted = (book_id) => {
         let savedBooks = this.state.savedBooks
+        let date = new Date().toLocaleDateString()
+
         for (let i = 0; i < savedBooks.length; i++) {
             if (savedBooks[i].book_id === book_id) {
                 savedBooks[i].completed = !savedBooks[i].completed
+                if (savedBooks[i].date_completed === null) {
+                    savedBooks[i].date_completed = date;
+                } else {
+                    savedBooks[i].date_completed = null;
+                }
             }
         }
-        this.setState({ savedBooks })
+        this.setState({ savedBooks, selected: null })
         console.log(savedBooks)
     }
 
@@ -260,7 +268,7 @@ class Tsundoku extends Component {
         );
 
 
-        this.setState({ savedBooks });
+        this.setState({ savedBooks, bookId: savedBooks.length });
         console.log('got saved books')
     }
 
@@ -272,7 +280,11 @@ class Tsundoku extends Component {
             type: 'success',
             message: `Saved the book ${book.volumeInfo.title}`
         })
-        this.setState({ savedBooks, selected: null, notifications })
+        this.setState({ 
+            savedBooks, 
+            selected: null, 
+            notifications
+         })
         // await axios.post('/books', book)
     }
 

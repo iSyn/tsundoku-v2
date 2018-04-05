@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import { Redirect } from 'react-router-dom'
 
+import books from "../assets/books.png";
+
 import Header from './Header';
 import SavedBooks from './SavedBooks'
 import ProfileStatus from './ProfileStatus'
@@ -74,6 +76,7 @@ class ProfilePage extends Component {
                         />
                     </div>
                 </div>
+                <img className='books-img' src={books} alt=""/>
             </div>
         )
     }

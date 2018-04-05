@@ -70,7 +70,7 @@ class LandingPage extends Component {
                             <input type="text" className='search' placeholder='Search...'/>
                             <i className='fa fa-search fa-2x'></i>
                         </form>
-                        : <p>Loading...</p>
+                        : <div className="lds-dual-ring"></div>
                     }
                     
                     <p className='definition'>Tsundoku (Japanese: 積ん読) is acquiring reading materials but letting them pile up in one's home without reading them</p>

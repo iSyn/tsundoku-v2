@@ -9,6 +9,7 @@ class BookModal extends Component {
             completed: false,
             date_added: new Date().toLocaleDateString(),
             date_completed: null,
+            book_id: this.props.selected.id,
             volumeInfo: {
                 title: this.props.selected.volumeInfo.title,
                 author: this.props.selected.volumeInfo.author,
@@ -24,7 +25,8 @@ class BookModal extends Component {
     }
 
     handleCompletedClick = () => {
-        this.props.toggleCompleted(this.props.selected.index)
+        this.props.toggleCompleted(this.props.selected.book_id)
+        console.log('bookModal book id:', this.props.selected.book_id)
     }
 
     render() { 
