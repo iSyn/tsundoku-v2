@@ -8,6 +8,8 @@ services:
       working_dir: /eureka-server
       volumes:
         - ./eureka-server:/eureka-server
+      depends_on:
+        - api-gateway
       command: './gradlew bootRun'
       environment:
         - GRADLE_USER_HOME=cache
@@ -19,8 +21,6 @@ services:
       working_dir: /api-gateway
       volumes:
         - ./api-gateway:/api-gateway
-      depends_on:
-        - eureka
       command: './gradlew bootRun'
       environment:
         - GRADLE_USER_HOME=cache
@@ -39,20 +39,20 @@ services:
       environment:
         - GRADLE_USER_HOME=cache
         - SPRING_PROFILES_ACTIVE=dev
-  books-api:
-      image: anapsix/alpine-java:8_jdk_unlimited
-      ports:
-        - '8082:8082'
-      working_dir: /books-api
-      volumes:
-        - ./books-api:/books-api
-      depends_on:
-        - eureka
-        - postgresdev
-      command: './gradlew bootRun'
-      environment:
-        - GRADLE_USER_HOME=cache
-        - SPRING_PROFILES_ACTIVE=dev
+#  books-api:
+#      image: anapsix/alpine-java:8_jdk_unlimited
+#      ports:
+#        - '8082:8082'
+#      working_dir: /books-api
+#      volumes:
+#        - ./books-api:/books-api
+#      depends_on:
+#        - users-api
+#        - postgresdev
+#      command: './gradlew bootRun'
+#      environment:
+#        - GRADLE_USER_HOME=cache
+#        - SPRING_PROFILES_ACTIVE=dev
   postgresdev:
       image: postgres
       ports:

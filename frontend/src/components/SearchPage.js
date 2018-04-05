@@ -48,6 +48,8 @@ class SearchPage extends Component {
                         selected={this.props.selected}
                         closeAllModals={this.props.closeAllModals}
                         user={this.props.user}
+                        
+                        saveBook={this.props.saveBook}
                     /> 
                 }
                 { this.props.showHamburgerMenu && 

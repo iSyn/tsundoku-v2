@@ -7,8 +7,9 @@ class SignupModal extends Component {
         let username = document.querySelector('.input-username').value
         let password = document.querySelector('.input-password').value
         let confirmPassword = document.querySelector('.input-confirm-password').value
+        let date_created = new Date()
 
-        let newUser = { username, password }
+        let newUser = { username, password, date_created }
 
         if (password.length > 0) {
             if (password === confirmPassword) {

@@ -515,6 +515,18 @@ button:active {
     box-shadow: 0 2px 10px #545454;
     border-radius: 10px;
     color: #545454;
+    animation: fadein-up 1s forwards;
+}
+
+@keyframes fadein-up {
+    from {
+        opacity: 0;
+        transform: translateY(300px)
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0px)
+    }
 }
 
 .saved-books-header {
@@ -544,6 +556,7 @@ button:active {
     box-shadow: 0 2px 10px #545454;
     border-radius: 10px;
     color: #545454;
+    animation: fadein-up 1.5s forwards;
 }
 
 .stats {
@@ -566,4 +579,53 @@ button:active {
 .stats p:last-child {
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
+}
+
+.saved-book, .saved-books-categories {
+    display: flex;
+    flex-flow: row nowrap;
+    font-family: 'IBM Plex Serif';
+    padding: 5px;
+    align-items: center;
+}
+
+.saved-book:nth-child(even) {
+    background: #ececec;
+}
+
+.saved-book:nth-child(odd) {
+    background: #dfdfdf;
+}
+
+.saved-book:hover {
+    filter: brightness(0.9);
+    cursor: pointer;
+}
+
+.saved-book__date-added {
+    width: 120px;
+    text-align: center;
+}
+
+.saved-book__title {
+    flex-grow: 1;
+}
+
+.saved-book__completed {
+    width: 100px;
+    text-align: center;
+}
+
+.show-completed {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    font-size: 15px;
+}
+
+.saved-book-date-container {
+    padding: 10px 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
 }

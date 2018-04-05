@@ -4,9 +4,27 @@ class BookModal extends Component {
 
     closeModal = () => this.props.closeAllModals()
 
+    handleSaveClick = () => {
+        let book = {
+            completed: false,
+            date_added: new Date().toLocaleDateString(),
+            date_completed: null,
+            volumeInfo: {
+                title: this.props.selected.volumeInfo.title,
+                author: this.props.selected.volumeInfo.author,
+                description: this.props.selected.volumeInfo.description,
+                imageLinks: this.props.selected.volumeInfo.imageLinks
+            }
+        }
+        this.props.saveBook(book)
+    }
+
+    handleCompletedClick = () => {
+        this.props.toggleCompleted(this.props.selected.index)
+    }
+
     render() { 
         let info = this.props.selected.volumeInfo
-        console.log('book info', info)
 
         return (  
             <div className='signup-modal-container'>
@@ -19,7 +37,21 @@ class BookModal extends Component {
                         <hr/>
                         { info.authors && <p>Written by: {info.authors.map((author) => author + " ")}</p> }
                         <hr/>
-                        { this.props.user ? <button>TSUNDOKU IT</button> : <button>SIGN IN TO SAVE</button> }
+
+                        {/* SEARCH PAGE */}
+                        { this.props.location !== "profile" && this.props.user && <button onClick={this.handleSaveClick}>TSUNDOKU IT</button> }
+                        { this.props.location !== "profile" && !this.props.user && <button>SIGN IN TO SAVE</button> }
+
+                        {/* PROFILE PAGE */}
+                        { this.props.location === "profile" && 
+                            <div className='saved-book-date-container'>
+                                <p>Date Added: {this.props.selected.date_added}</p>
+                                <p>Date Completed: {this.props.selected.date_completed ? this.props.selected.date_completed : "--"}</p>
+                            </div>
+                        }
+                        { this.props.location === "profile" && this.props.selected.completed === false && <button onClick={this.handleCompletedClick}>MARK AS COMPLETED</button> }
+                        { this.props.location === "profile" && this.props.selected.completed === true && <button onClick={this.handleCompletedClick}>MARK AS UNREAD</button> }
+                        <hr/>
                         <p>{info.description}</p>
                         <hr/>
                         { info.averageRating > 0 && <p>Average Rating: {info.averageRating} stars from {info.ratingsCount} reviews</p> }

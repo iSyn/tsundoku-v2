@@ -53,6 +53,7 @@ class LandingPage extends Component {
                         user={this.props.user} 
                         toggleSignupModal={this.props.toggleSignupModal} 
                         toggleSigninModal={this.props.toggleSigninModal} 
+                        toggleHamburgerMenu={this.props.toggleHamburgerMenu}
                         signOut={this.props.signOut} 
                         changeLocation={this.props.changeLocation}
                     /> 

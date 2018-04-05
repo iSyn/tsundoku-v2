@@ -25,6 +25,10 @@ class Tsundoku extends Component {
     state = {
         user: null,
         userId: null,
+        dateCreated: null,
+
+        savedBooks: [],
+
         searchResults: [],
         notifications: [],
         selected: null,
@@ -34,6 +38,16 @@ class Tsundoku extends Component {
         showHamburgerMenu: false,
         showSignupModal: false,
         showSigninModal: false,
+    }
+
+    componentDidMount = async () => {
+        try {
+            await axios.get("/users").then((res) => {
+                console.log('Users DB is now ready')
+            })
+        } catch (error) {
+            console.log(':)')
+        }
     }
 
     searchFor = async (search) => {
@@ -83,8 +97,10 @@ class Tsundoku extends Component {
                 this.setState({
                     showSignupModal: false,
                     user: newUser.username,
-                    userId: res.data.user_id
+                    userId: res.data.user_id,
+                    dateCreated: res.data.date_created
                 })
+                // this.getSavedBooks()
             } else {
                 notifications.push({
                     type: 'error',
@@ -109,9 +125,11 @@ class Tsundoku extends Component {
                 this.setState({
                     user: res.data.username,
                     userId: res.data.user_id,
+                    dateCreated: res.data.date_created,
                     showSigninModal: false,
                     notifications
                 })
+                this.getSavedBooks()
             } else {
                 notifications.push({
                     type: 'error',
@@ -133,7 +151,9 @@ class Tsundoku extends Component {
         this.setState({
             showHamburgerMenu: false,
             user: null,
-            userId: null
+            userId: null,
+            redirect: 'home',
+            location: 'home'
         })
     }
 
@@ -152,9 +172,86 @@ class Tsundoku extends Component {
         })
     }
 
+    toggleCompleted = (book_index) => {
+        let savedBooks = this.state.savedBooks
+        let date = new Date().toLocaleDateString();
+    
+        if (!savedBooks[book_index].completed) {
+            savedBooks[book_index].completed = !savedBooks[book_index].completed;
+            savedBooks[book_index].date_completed = date
+        } else {
+            savedBooks[book_index].completed = false
+            savedBooks[book_index].date_completed = null
+        }
+        this.setState({ savedBooks, selected: null })
+    }
+
+    getSavedBooks = () => {
+
+        let savedBooks = [...this.state.savedBooks]
+        savedBooks.push(
+            { 
+                book_id: 1, 
+                user_id: 1, 
+                date_added: "4/1/2018", 
+                completed: false,
+                date_completed: null,
+                volumeInfo: {
+                    title: "Cracking the Coding Interview",
+                    author: ["Gayle Laakmann McDowell"],
+                    description: "Now in the 6th edition, the book gives you the interview preparation you need to get the top software developer jobs. This is a deeply technical book and focuses on the software engineering skills to ace your interview. The book includes 189 programming interview questions and answers, as well as other advice.", 
+                    imageLinks: {
+                        thumbnail:"http://books.google.com/books/content?id=jD8iswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                    }
+
+                }
+            }, { 
+                book_id: 2, 
+                user_id: 1, 
+                date_added: "4/1/2018", 
+                completed: false,
+                date_completed: null,
+                volumeInfo: {
+                    title: "Book 2",
+                    author: ["Gayle Laakmann McDowell"],
+                    description: "Now in the 6th edition, the book gives you the interview preparation you need to get the top software developer jobs. This is a deeply technical book and focuses on the software engineering skills to ace your interview. The book includes 189 programming interview questions and answers, as well as other advice.", 
+                    imageLinks: {
+                        thumbnail:"http://books.google.com/books/content?id=jD8iswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                    }
+
+                }
+            }, { 
+                book_id: 3, 
+                user_id: 1, 
+                date_added: "4/1/2018", 
+                completed: true,
+                date_completed: null,
+                volumeInfo: {
+                    title: "Book 3",
+                    author: ["Gayle Laakmann McDowell"],
+                    description: "Now in the 6th edition, the book gives you the interview preparation you need to get the top software developer jobs. This is a deeply technical book and focuses on the software engineering skills to ace your interview. The book includes 189 programming interview questions and answers, as well as other advice.", 
+                    imageLinks: {
+                        thumbnail:"http://books.google.com/books/content?id=jD8iswEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+                    }
+
+                }
+            },
+        );
+
+
+        this.setState({ savedBooks });
+        console.log('got saved books')
+    }
+
+    saveBook = async (book) => {
+        let savedBooks = [...this.state.savedBooks]
+        savedBooks.push(book)
+        this.setState({ savedBooks, selected: null })
+        // await axios.post('/books', book)
+    }
+
     changeLocation = (location) => {
-        console.log('CHANGING FROM MAIN', location)
-        this.setState({ location })
+        this.setState({ location, showHamburgerMenu: false })
     }
 
     render() {
@@ -208,6 +305,8 @@ class Tsundoku extends Component {
 
                     location={this.state.location}
                     changeLocation={this.changeLocation.bind(this)}
+
+                    saveBook={this.saveBook.bind(this)}
                 />
             )
         }
@@ -216,15 +315,25 @@ class Tsundoku extends Component {
             return (
                 <ProfilePage 
                     user={this.state.user}
+                    dateCreated={this.state.dateCreated}
                     //
+                    showHamburgerMenu={this.state.showHamburgerMenu}
                     toggleHamburgerMenu={this.toggleHamburgerMenu.bind(this)}
                     toggleSignupModal={this.toggleSignupModal.bind(this)}
                     toggleSigninModal={this.toggleSigninModal.bind(this)}
                     closeAllModals={this.closeAllModals.bind(this)}
 
+                    signOut={this.signOut.bind(this)}
+                    signIn={this.signIn.bind(this)}
+
                     location={this.state.location}
                     changeLocation={this.changeLocation.bind(this)}
 
+                    savedBooks={this.state.savedBooks}
+                    toggleCompleted={this.toggleCompleted.bind(this)}
+
+                    selected={this.state.selected}
+                    setSelected={this.setSelected.bind(this)}
                 />
             )
         }
