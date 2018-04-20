@@ -21,7 +21,6 @@ class SearchPage extends Component {
     render() { 
 
         let { location } = this.props;
-        console.log("location", location);
         if (location === "profile") {
           return <Redirect to="/profile" />;
         } else if (location === "books") {
@@ -49,21 +48,22 @@ class SearchPage extends Component {
                 { this.props.showSigninModal && 
                     <SigninModal 
                         closeAllModals={this.props.closeAllModals}
-                        toggleSigninModal={this.props.toggleSigninModal}
+                        toggleSignupModal={this.props.toggleSignupModal}
+                        toggleSigninModal={this.props.toggleSigninModal} 
                         signIn={this.props.signIn}
                     /> 
                 }
                 { this.props.showSignupModal && 
                     <SignupModal 
                         closeAllModals={this.props.closeAllModals} 
-                        toggleSignupModal={this.props.toggleSignupModal} 
+                        toggleSignupModal={this.props.toggleSignupModal}
+                        toggleSigninModal={this.props.toggleSigninModal} 
                         createNewUser={this.props.createNewUser}
                     /> 
                 }
                 { this.props.selected && 
                     <BookModal 
                         selected={this.props.selected}
-                        closeAllModals={this.props.closeAllModals}
                         user={this.props.user}
 
                         toggleSignupModal={this.props.toggleSignupModal}

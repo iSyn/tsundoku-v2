@@ -10,9 +10,10 @@ import ProfileStatus from './ProfileStatus'
 import ProfileSettings from './ProfileSettings'
 import BookModal from './BookModal'
 import HamburgerMenu from "./HamburgerMenu";
+import ChangeUsernameModal from './ChangeUsernameModal'
+import NotificationContainer from "./NotificationContainer"
 
 class ProfilePage extends Component {
-    state = {}
     render() { 
 
         if (!this.props.user) {
@@ -28,6 +29,16 @@ class ProfilePage extends Component {
 
             <div className='profile-page'>
 
+                <NotificationContainer notifications={this.props.notifications} removeNotification={this.props.removeNotification}/>
+
+                {
+                    this.props.showChangeUsernameModal &&
+                    <ChangeUsernameModal 
+                        closeAllModals={this.props.closeAllModals}
+                        changeUsername={this.props.changeUsername}
+                    /> 
+                }
+
                 { 
                     this.props.selected && 
                     <BookModal 
@@ -37,6 +48,7 @@ class ProfilePage extends Component {
 
                         location={this.props.location}
                         toggleCompleted={this.props.toggleCompleted}
+                        giveUp={this.props.giveUp}
                     /> 
                 }
 
@@ -69,10 +81,12 @@ class ProfilePage extends Component {
                     <div className="profile-page-right">
                         <ProfileStatus 
                             savedBooks={this.props.savedBooks}
+                            booksGivenUp={this.props.booksGivenUp}
                         />
                         <ProfileSettings 
                             user={this.props.user}
                             dateCreated={this.props.dateCreated}
+                            toggleChangeUsernameModal={this.props.toggleChangeUsernameModal}
                         />
                     </div>
                 </div>

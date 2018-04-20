@@ -13,6 +13,11 @@ class SigninModal extends Component {
         document.querySelector(".login-password").value = ""
     }
 
+    handleClick = () => {
+        this.props.toggleSigninModal()
+        this.props.toggleSignupModal()
+    }
+
     closeModals = () => this.props.closeAllModals()
 
     render() { 
@@ -25,12 +30,13 @@ class SigninModal extends Component {
                     <form onSubmit={this.handleSubmit}>
                         <div className="form-input-container">
                             <div><i className='fa fa-user fa-2x'></i></div>
-                            <input className='login-username' type="text" placeholder='Username'/>
+                            <input className='login-username' type="text" placeholder='Username' autoFocus/>
                         </div>
                         <div className="form-input-container">
                             <div><i className='fa fa-lock fa-2x'></i></div>
                             <input className='login-password' type="password" placeholder='Password'/>
                         </div>
+                        <p onClick={this.handleClick} className='signup-text'>Don't have an account? Click here to Sign Up!</p>
                         <button>LOG IN</button>
                     </form>
                 </div>

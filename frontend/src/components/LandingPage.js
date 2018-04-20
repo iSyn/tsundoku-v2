@@ -21,7 +21,6 @@ class LandingPage extends Component {
     render() { 
 
         let { location } = this.props
-        console.log('location', location)
         if (location === 'profile') {
             return <Redirect to="/profile" />
         } else if (location === 'books') {
@@ -37,7 +36,8 @@ class LandingPage extends Component {
                 { this.props.showSignupModal && 
                     <SignupModal 
                         closeAllModals={this.props.closeAllModals} 
-                        toggleSignupModal={this.props.toggleSignupModal} 
+                        toggleSignupModal={this.props.toggleSignupModal}
+                        toggleSigninModal={this.props.toggleSigninModal} 
                         createNewUser={this.props.createNewUser}
                     /> 
                 }
@@ -46,6 +46,7 @@ class LandingPage extends Component {
                     <SigninModal 
                         closeAllModals={this.props.closeAllModals}
                         toggleSigninModal={this.props.toggleSigninModal}
+                        toggleSignupModal={this.props.toggleSignupModal}
                         signIn={this.props.signIn}
                     /> 
                 }

@@ -18,8 +18,6 @@ class ChatPopup extends Component {
         if (Math.random() >= .5) comeFrom = 'right'
 
         let randomHeight = Math.floor(Math.random() * 90) + 1 + "vh"
-        console.log(randomHeight)
-
 
         return (  
             <div className='chat-popup-container' style={{top: randomHeight, animationName: comeFrom}}>

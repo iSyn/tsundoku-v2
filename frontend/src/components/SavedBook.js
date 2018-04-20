@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 
-import BookModal from './BookModal'
-
 class SavedBook extends Component {
 
     handleBookClick = () => {
@@ -22,8 +20,6 @@ class SavedBook extends Component {
         if (this.props.book.completed === true) {
             opacity = .4
         }
-
-        console.log(book.book_id, "completed:", book.completed)
 
         return (
             

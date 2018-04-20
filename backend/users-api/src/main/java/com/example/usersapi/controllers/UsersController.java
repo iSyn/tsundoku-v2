@@ -57,4 +57,10 @@ public class UsersController {
         return HttpStatus.OK;
     }
 
+    @PatchMapping("/{user_id}")
+    public void changeUsername(@PathVariable Long user_id, @RequestBody User user) throws Exception {
+        User selectedUser = usersRepository.findOne(user_id);
+        selectedUser.setUsername(user.getUsername());
+        usersRepository.save(selectedUser);
+    }
 }

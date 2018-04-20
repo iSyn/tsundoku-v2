@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 
 class SignupModal extends Component {
 
+    handleClick = () => {
+        this.props.toggleSignupModal()
+        this.props.toggleSigninModal()
+    }
+
     handleSubmit = (e) => {
         e.preventDefault()
         let username = document.querySelector('.input-username').value
@@ -37,7 +42,7 @@ class SignupModal extends Component {
                     <form onSubmit={this.handleSubmit}>
                         <div className="form-input-container form--username">
                             <div><i className='fa fa-user fa-2x'></i></div>
-                            <input className='input-username' type="text" placeholder='Username'/>
+                            <input className='input-username' type="text" placeholder='Username' autoFocus/>
                         </div>
                         <div className="form-input-container form--password">
                             <div><i className='fa fa-lock fa-2x'></i></div>
@@ -47,6 +52,7 @@ class SignupModal extends Component {
                             <div><i className='fa fa-lock fa-2x'></i></div>
                             <input className='input-confirm-password' type="password" placeholder='Confirm Password'/>
                         </div>
+                        <p onClick={this.handleClick} className='signup-text'>Already have an account? Sign in here!</p>
                         <button>CREATE ACCOUNT</button>
                     </form>
                 </div>

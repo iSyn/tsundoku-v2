@@ -18,6 +18,7 @@ class ProfileStatus extends Component {
                     <p><span>Books Saved:</span> {savedBooks}</p>
                     <p><span>Books Completed:</span> {booksCompleted}</p>
                     <p><span>Books in Progress:</span> {booksInProgress}</p>
+                    <p><span>Books Given Up:</span> {this.props.booksGivenUp}</p>
                 </div>
             </div>
         )

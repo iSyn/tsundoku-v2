@@ -24,12 +24,14 @@ import LandingPage from './components/LandingPage'
 import SearchPage from './components/SearchPage'
 import ProfilePage from './components/ProfilePage'
 
+
 class Tsundoku extends Component {
 
     state = {
         user: null,
         userId: null,
         dateCreated: null,
+        booksGivenUp: 0,
 
         savedBooks: [],
         showCompleted: false,
@@ -43,15 +45,15 @@ class Tsundoku extends Component {
         showHamburgerMenu: false,
         showSignupModal: false,
         showSigninModal: false,
+
+        showChangeUsernameModal: false
     }
 
     componentDidMount = async () => {
         try {
             await axios.get("/users").then((res) => {
-                console.log('Users DB is now ready')
             })
         } catch (error) {
-            console.log(':)')
         }
         this.setState({ loading: false })
     }
@@ -77,6 +79,39 @@ class Tsundoku extends Component {
         this.setState({ selected: book })
     }
 
+    toggleChangeUsernameModal = () => {
+        let showChangeUsernameModal = !this.state.showChangeUsernameModal
+        this.setState({ showChangeUsernameModal })
+    }
+
+    changeUsername = async (new_username) => {
+        let id = this.state.userId
+        let notifications = this.state.notifications;
+        await axios.get(`/users/username/${new_username}`).then((res) => {
+            if (res.data === "") {
+                axios.patch(`/users/${id}`, {
+                    username: new_username
+                }).then((res) => {
+                    notifications.push({
+                        type: 'success',
+                        message: `You successfully changed your usename to: ${new_username}`
+                    })
+                    this.setState({
+                        showChangeUsernameModal: false,
+                        user: new_username,
+                        notifications
+                    })
+                })
+            } else {
+                notifications.push({
+                    type: 'error',
+                    message: `The username ${new_username} already exists`
+                })
+                this.setState({ notifications })
+            }
+        })
+    }
+
     toggleHamburgerMenu = () => {
         let showHamburgerMenu = !this.state.showHamburgerMenu
         this.setState({ showHamburgerMenu })
@@ -84,12 +119,12 @@ class Tsundoku extends Component {
 
     toggleSignupModal = () => {
         let showSignupModal = !this.state.showSignupModal
-        this.setState({ showSignupModal, showHamburgerMenu: false })
+        this.setState({ showSignupModal, showHamburgerMenu: false, selected: null })
     }
 
     toggleSigninModal = () => {
         let showSigninModal = !this.state.showSigninModal
-        this.setState({ showSigninModal, showHamburgerMenu: false })
+        this.setState({ showSigninModal, showHamburgerMenu: false, selected: null })
     }
 
     createNewUser = async (newUser) => {
@@ -100,13 +135,13 @@ class Tsundoku extends Component {
                     type: 'success',
                     message: `Account Created. Welcome ${newUser.username}`
                 })
+
                 this.setState({
                     showSignupModal: false,
                     user: newUser.username,
                     userId: res.data.user_id,
-                    dateCreated: res.data.date_created
+                    dateCreated: res.data.date_created,
                 })
-                // this.getSavedBooks()
             } else {
                 notifications.push({
                     type: 'error',
@@ -135,7 +170,10 @@ class Tsundoku extends Component {
                     showSigninModal: false,
                     notifications
                 })
-                this.getSavedBooks()
+
+                if (this.state.user === 'synclair') {
+                    this.getSavedBooks();
+                }
             } else {
                 notifications.push({
                     type: 'error',
@@ -165,7 +203,6 @@ class Tsundoku extends Component {
 
     removeNotification = (index) => {
         let notifications = this.state.notifications
-        console.log('removing notification where index is: ', index)
         notifications.splice(index, 1)
         this.setState({ notifications })
     }
@@ -175,6 +212,7 @@ class Tsundoku extends Component {
             selected: null,
             showSignupModal: false,
             showSigninModal: false,
+            showChangeUsernameModal: false
         })
     }
 
@@ -207,7 +245,6 @@ class Tsundoku extends Component {
             }
         }
         this.setState({ savedBooks, selected: null })
-        console.log(savedBooks)
     }
 
     toggleShowCompleted = () => {
@@ -345,12 +382,53 @@ class Tsundoku extends Component {
                         thumbnail: "http://books.google.com/books/content?id=fIgw1X5oa7gC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
                     }
                 }
+            }, { 
+                book_id: "qhSawKZHRWYC",
+                user_id: 1, 
+                date_added: "4/3/2018", 
+                completed: true,
+                date_completed: "4/3/2018",
+                volumeInfo: {
+                    title: "The Twits",
+                    authors: ["Roald Dahl"],
+                    description: "From the bestselling author of Charlie and the Chocolate Factory and The BFG! Mr. and Mrs. Twit are the smelliest, nastiest, ugliest people in the world. They hate everything—except playing mean jokes on each other, catching innocent birds to put in their Bird Pies, and making their caged monkeys, the Muggle-Wumps, stand on their heads all day. But the Muggle-Wumps have had enough. They don't just want out, they want revenge.",
+                    imageLinks: {
+                        thumbnail: "http://books.google.com/books/content?id=qhSawKZHRWYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                    }
+                }
+            }, { 
+                book_id: "o5-dBrmqAJ0C",
+                user_id: 1, 
+                date_added: "4/3/2018", 
+                completed: true,
+                date_completed: "4/4/2018",
+                volumeInfo: {
+                    title: "James and the Giant Peach",
+                    authors: ["Roald Dahl"],
+                    description: "From the bestselling author of Charlie and the Chocolate Factory and The BFG! After James Henry Trotter's parents are tragically eaten by a rhinoceros, he goes to live with his two horrible aunts, Spiker and Sponge. Life there is no fun, until James accidentally drops some magic crystals by the old peach tree and strange things start to happen. The peach at the top of the tree begins to grow, and before long it's as big as a house. Inside, James meets a bunch of oversized friends—Grasshopper, Centipede, Ladybug, and more. With a snip of the stem, the peach starts rolling away, and the great adventure begins! From the Trade Paperback edition.",
+                    imageLinks: {
+                        thumbnail: "http://books.google.com/books/content?id=o5-dBrmqAJ0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                    }
+                }
+            }, { 
+                book_id: "IClpljgfEZEC",
+                user_id: 1, 
+                date_added: "4/4/2018", 
+                completed: true,
+                date_completed: null,
+                volumeInfo: {
+                    title: "Matilda",
+                    authors: ["Roald Dahl"],
+                    description: "Now a musical! Matilda is a sweet, exceptional young girl, but her parents think she's just a nuisance. She expects school to be different but there she has to face Miss Trunchbull, a menacing, kid-hating headmistress. When Matilda is attacked by the Trunchbull she suddenly discovers she has a remarkable power with which to fight back. It'll take a superhuman genius to give Miss Trunchbull what she deserves and Matilda may be just the one to do it! Here is Roald Dahl's original novel of a little girl with extraordinary powers. This much-loved story has recently been made into a wonderful new musical, adapted by Dennis Kelly with music and lyrics by Tim Minchin.",
+                    imageLinks: {
+                        thumbnail: "http://books.google.com/books/content?id=IClpljgfEZEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+                    }
+                }
             },
         );
 
 
         this.setState({ savedBooks, bookId: savedBooks.length });
-        console.log('got saved books')
     }
 
     saveBook = async (book) => {
@@ -371,6 +449,20 @@ class Tsundoku extends Component {
 
     changeLocation = (location) => {
         this.setState({ location, showHamburgerMenu: false, notifications: [] })
+    }
+
+    giveUp = (bookId) => {
+        let savedBooks = this.state.savedBooks
+        for (let i = 0; i < savedBooks.length; i++) {
+            if (savedBooks[i].book_id === bookId) {
+                let index = i;
+                let booksGivenUp = this.state.booksGivenUp
+                booksGivenUp++
+                savedBooks.splice(index, 1)
+
+                this.setState({ savedBooks, selected: null, booksGivenUp });
+            }
+        }
     }
 
     render() {
@@ -455,6 +547,8 @@ class Tsundoku extends Component {
                     location={this.state.location}
                     changeLocation={this.changeLocation.bind(this)}
 
+                    booksGivenUp={this.state.booksGivenUp}
+                    giveUp={this.giveUp.bind(this)}
                     savedBooks={this.state.savedBooks}
                     toggleCompleted={this.toggleCompleted.bind(this)}
                     toggleShowCompleted={this.toggleShowCompleted.bind(this)}
@@ -462,6 +556,13 @@ class Tsundoku extends Component {
 
                     selected={this.state.selected}
                     setSelected={this.setSelected.bind(this)}
+
+                    notifications={this.state.notifications}
+                    removeNotification={this.removeNotification.bind(this)}
+
+                    toggleChangeUsernameModal={this.toggleChangeUsernameModal.bind(this)}
+                    showChangeUsernameModal={this.state.showChangeUsernameModal}
+                    changeUsername={this.changeUsername.bind(this)}
                 />
             )
         }

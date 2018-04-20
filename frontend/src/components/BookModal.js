@@ -24,6 +24,11 @@ class BookModal extends Component {
         this.props.toggleSigninModal()
     }
 
+    handleGiveUpClick = () => {
+        let id = this.props.selected.book_id
+        this.props.giveUp(id)
+    }
+
     handleCompletedClick = () => {
         this.props.toggleCompleted(this.props.selected.book_id)
         console.log('bookModal book id:', this.props.selected.book_id)
@@ -55,7 +60,12 @@ class BookModal extends Component {
                                 <p>Date Completed: {this.props.selected.date_completed ? this.props.selected.date_completed : "--"}</p>
                             </div>
                         }
-                        { this.props.location === "profile" && this.props.selected.completed === false && <button onClick={this.handleCompletedClick}>MARK AS COMPLETED</button> }
+                        { this.props.location === "profile" && this.props.selected.completed === false && 
+                            <div className='prof-btns'>
+                                <button onClick={this.handleCompletedClick}>MARK AS COMPLETED</button>
+                                <button onClick={this.handleGiveUpClick} style={{backgroundColor: "#d345456e"}}>GIVE UP</button>
+                            </div> 
+                        }
                         { this.props.location === "profile" && this.props.selected.completed === true && <button onClick={this.handleCompletedClick}>MARK AS UNREAD</button> }
                         <hr/>
                         <p>{info.description}</p>
