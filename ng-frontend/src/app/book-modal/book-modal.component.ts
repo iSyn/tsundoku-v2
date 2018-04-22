@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchService } from '../search.service';
+import { ModalService } from '../modal.service';
 
 @Component({
   selector: 'app-book-modal',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookModalComponent implements OnInit {
 
-  constructor() { }
+  book: object = {}
+
+  constructor( private modalService: ModalService ) { }
 
   ngOnInit() {
+    this.book = this.modalService.getSelected()
   }
 
 }

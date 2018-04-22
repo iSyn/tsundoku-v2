@@ -1,6 +1,6 @@
 <div class="search-page">
   <app-header></app-header>
-  <!-- <app-book-modal *ngIf='selected'></app-book-modal> -->
+  <app-book-modal *ngIf='selected'></app-book-modal>
   <div class="search-container">
     <form
       (submit)="handleSubmit($event)"
@@ -14,7 +14,7 @@
       <i class="fa fa-search fa-2x"></i>
     </form>
     <div class="books-container">
-      <app-search-book *ngFor='let book of books' [bookInfo]='book' (bookEmit)='toggleModal($event)'></app-search-book>
+      <app-search-book *ngFor='let book of books' [bookInfo]='book' (bookEmit)='setSelected($event)'></app-search-book>
     <!-- </div> -->
   </div>
 </div>

@@ -3,16 +3,14 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 @Injectable()
 export class ModalService {
 
-  @Output() selectedEvent = new EventEmitter<object>()
-  selectedBook: object;
+  selected: object = {};
 
   constructor() { }
 
-  selectBook = (book) => {
-    this.selectedBook = book
-    this.selectedEvent.emit(this.selectedBook)
+  setSelected = (book) => {
+    this.selected = book
   }
 
-  getSelectedBook = () => this.selectedBook
+  getSelected = () => this.selected
 
 }

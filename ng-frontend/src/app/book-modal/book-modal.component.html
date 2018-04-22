@@ -1,6 +1,15 @@
 <div class="signup-modal-container">
   <div class="modal-bg"></div>
   <div class="book-modal">
-    <h1>test</h1>
+    <i class="fa fa-times"></i>
+    <div 
+      class="book-img"
+      [ngStyle]="{'background-image': 'url(' + book.volumeInfo.imageLinks.thumbnail + ')'}"
+    ></div>
+    <div class="book-info">
+      <h1>{{ book.volumeInfo.title }}</h1>
+      <hr>
+      <p>Written by: {{ book.volumeInfo.author }}</p>
+    </div>
   </div>
 </div>

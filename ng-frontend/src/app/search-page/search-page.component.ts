@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SearchService } from '../search.service';
+import { ModalService } from '../modal.service';
 
 @Component({
   selector: 'app-search-page',
@@ -8,18 +9,20 @@ import { SearchService } from '../search.service';
 })
 export class SearchPageComponent implements OnInit {
 
+  @Output() outputEvent: EventEmitter<object> = new EventEmitter<object>()
+
   searchingFor: string;
   books: any[] = [];
   selected: object;
 
   constructor( 
     private searchService: SearchService,
+    private modalService: ModalService
   ) { }
 
   ngOnInit() {
     this.searchService.getBooks().subscribe(book => {
       this.books = book
-      console.log(this.books)
     })
   }
 
@@ -29,9 +32,12 @@ export class SearchPageComponent implements OnInit {
     this.searchService.searchBooks(searchFor)
   }
 
-  toggleModal = (book: object) => {
-    console.log('toggling modal for the book:', book)
+  setSelected = (book: object) => {
+    this.selected = book
+    this.modalService.setSelected(this.selected)
+    this.outputEvent.emit(this.selected)
   }
+  
 
 
 }

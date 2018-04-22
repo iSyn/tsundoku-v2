@@ -16,7 +16,7 @@ export class SearchBookComponent implements OnInit {
   ngOnInit() { }
 
   selectBook = (book) => {
-    this.modalService.selectBook(book)
+    this.modalService.setSelected(book)
     this.bookEmit.emit(this.bookInfo)
   }
 }
