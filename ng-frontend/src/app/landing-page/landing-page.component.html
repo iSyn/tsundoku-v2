@@ -2,8 +2,16 @@
   <app-header></app-header>
   <div class="input-container">
     <p>Search for a book you <span class="text-color">probably</span> won't read...</p>
-    <form>
-      <input type="text" class="search" placeholder="Search...">
+    <form
+      (submit)="handleSubmit($event)"
+    >
+      <input 
+        [(ngModel)]='searchingFor'
+        type="text" 
+        name='search'
+        class="search" 
+        placeholder="Search..."
+      >
       <i class="fa fa-search fa-2x"></i>
     </form>
     <p class="definition">Tsundoku (Japanese: 積ん読) is acquiring reading materials but letting them pile up in one's home without reading them</p>
