@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ModalService } from '../modal.service'
 
 @Component({
   selector: 'app-search-book',
@@ -8,9 +9,14 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SearchBookComponent implements OnInit {
 
   @Input() bookInfo: object
+  @Output() bookEmit: EventEmitter<object> = new EventEmitter<object>()
 
-  constructor() { }
+  constructor( private modalService: ModalService ) { }
 
   ngOnInit() { }
 
+  selectBook = (book) => {
+    this.modalService.selectBook(book)
+    this.bookEmit.emit(this.bookInfo)
+  }
 }

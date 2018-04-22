@@ -9,9 +9,12 @@ import { SearchService } from '../search.service';
 export class SearchPageComponent implements OnInit {
 
   searchingFor: string;
-  books: any[] = []
+  books: any[] = [];
+  selected: object;
 
-  constructor( private searchService: SearchService ) { }
+  constructor( 
+    private searchService: SearchService,
+  ) { }
 
   ngOnInit() {
     this.searchService.getBooks().subscribe(book => {
@@ -26,6 +29,9 @@ export class SearchPageComponent implements OnInit {
     this.searchService.searchBooks(searchFor)
   }
 
-  
+  toggleModal = (book: object) => {
+    console.log('toggling modal for the book:', book)
+  }
+
 
 }

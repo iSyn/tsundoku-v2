@@ -10,6 +10,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HttpClientModule } from '@angular/common/http'
 import { SearchService } from './search.service';
+import { ModalService } from './modal.service'
 import { SearchBookComponent } from './search-book/search-book.component';
 import { BookModalComponent } from './book-modal/book-modal.component';
 
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    SearchService
+    SearchService,
+    ModalService
   ],
   bootstrap: [AppComponent]
 })
