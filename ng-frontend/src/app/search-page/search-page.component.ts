@@ -8,6 +8,7 @@ import { SearchService } from '../search.service';
 })
 export class SearchPageComponent implements OnInit {
 
+  searchingFor: string;
   books: any[] = []
 
   constructor( private searchService: SearchService ) { }
@@ -18,5 +19,13 @@ export class SearchPageComponent implements OnInit {
       console.log(this.books)
     })
   }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    const searchFor = this.searchingFor.replace(" ", "+")
+    this.searchService.searchBooks(searchFor)
+  }
+
+  
 
 }

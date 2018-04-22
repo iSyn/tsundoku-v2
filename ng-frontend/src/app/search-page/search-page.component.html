@@ -1,8 +1,15 @@
 <div class="search-page">
   <app-header></app-header>
   <div class="search-container">
-    <form action="">
-      <input type="text" placeholder="Search for something new...">
+    <form
+      (submit)="handleSubmit($event)"
+    >
+      <input 
+        [(ngModel)]='searchingFor'
+        type="text" 
+        name='search'
+        placeholder="Search for something new..."
+      >
       <i class="fa fa-search fa-2x"></i>
     </form>
     <div class="books-container">

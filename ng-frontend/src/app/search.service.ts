@@ -17,13 +17,25 @@ export class SearchService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  searchBooks = async (URL) => {
+  searchBooks = async (input) => {
+
+    const API_URL = `https://www.googleapis.com/books/v1/volumes?q=`
+    const SEARCH_FOR = input.replace(" ", "+")
+    const URL = `${API_URL}${SEARCH_FOR}&maxResults=40`
+
     return await this.http.get(URL).subscribe(book => {
       this._results = book['items']
+      this._results = this._results.filter((a) => {
+        if (a.volumeInfo.imageLinks) {
+          if (a.volumeInfo.imageLinks.thumbnail) {
+            return a
+          }
+        }
+      })
       this.router.navigate(['search'])
     })
   }
-
+  
   getBooks = () => {
     return of(this._results)
   }
