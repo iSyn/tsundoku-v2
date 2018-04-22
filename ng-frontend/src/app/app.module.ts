@@ -10,8 +10,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HttpClientModule } from '@angular/common/http'
 import { SearchService } from './search.service';
-import { BookComponent } from './book/book.component';
 import { SearchBookComponent } from './search-book/search-book.component';
+import { BookModalComponent } from './book-modal/book-modal.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -24,8 +24,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     LandingPageComponent,
     SearchPageComponent,
-    BookComponent,
-    SearchBookComponent
+    SearchBookComponent,
+    BookModalComponent
   ],
   imports: [
     BrowserModule,
