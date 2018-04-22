@@ -1,6 +1,6 @@
 <div 
   class="book"
-  
+  [ngStyle]="{'background-image': 'url(' + bookInfo.volumeInfo.imageLinks.thumbnail + ')'}"
 ></div>
 
 <!-- <div onClick={this.handleClick} className='book' style={{backgroundImage: `url(${book.volumeInfo.imageLinks.thumbnail})`}}></div> -->
