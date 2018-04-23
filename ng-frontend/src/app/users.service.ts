@@ -7,7 +7,9 @@ import { Subject } from 'rxjs/Subject';
 export class UsersService {
 
   private subject: Subject<any> = new Subject<any>()
+  private subject2: Subject<any> = new Subject<any>()
   showSigninModal: boolean = false
+  showSignupModal: boolean = false
 
   user: object = {}
 
@@ -20,11 +22,13 @@ export class UsersService {
     return this.subject.asObservable()
   }
 
+  getSignupModalStatus = (): Observable<boolean> => {
+    this.subject2.next(this.showSignupModal)
+    console.log(this.showSignupModal)
+    return this.subject2.asObservable()
+  }
+
   signIn = async (username, password) => {
-    console.log('trying to sign in from users service with:', username, password)
-    // await this.http.get('http://localhost:8080/users').toPromise().then((res) => {
-    //   console.log('res from signin service', res)
-    // })
     await this.http.get(`http://localhost:8080/users/username/${username}`).toPromise().then((res) => {
       if (res['password'] === password) {
         console.log('FOUND USER, LOGGING IN')
@@ -34,8 +38,9 @@ export class UsersService {
     })
   }
 
-  toggleModal = () => {
-    this.showSigninModal = !this.showSigninModal
-  }
+  toggleSigninModal = () => { this.showSigninModal = !this.showSigninModal }
+  toggleSignupModal = () => { this.showSignupModal = !this.showSignupModal }
+
+
 
 }

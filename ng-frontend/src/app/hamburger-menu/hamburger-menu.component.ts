@@ -14,8 +14,13 @@ export class HamburgerMenuComponent implements OnInit {
   }
 
   handleSigninClick = () => {
-    this.usersService.toggleModal()
+    this.usersService.toggleSigninModal()
     console.log(this.usersService.getSigninModalStatus())
+  }
+
+  handleSignupClick = () => {
+    this.usersService.toggleSignupModal()
+    console.log(this.usersService.getSignupModalStatus())
   }
 
 }
