@@ -38,6 +38,13 @@ export class UsersService {
     })
   }
 
+  signUp = async (newUser) => {
+    console.log('signing up:', newUser)
+    await this.http.post('http://localhost:8080/users', newUser).toPromise().then((res) => {
+      console.log('SIGN UP RES', res)
+    })
+  }
+
   toggleSigninModal = () => { this.showSigninModal = !this.showSigninModal }
   toggleSignupModal = () => { this.showSignupModal = !this.showSignupModal }
 

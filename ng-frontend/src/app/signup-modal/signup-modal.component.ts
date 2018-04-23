@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-signup-modal',
@@ -7,9 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupModalComponent implements OnInit {
 
-  constructor() { }
+  username: string;
+  password: string;
+  confirmPassword: string
+
+  constructor( private usersService: UsersService) { }
 
   ngOnInit() {
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+
+    let newUser = {
+      username: this.username,
+      password: this.password,
+      date_created: new Date()
+    }
+
+    if (this.password === this.confirmPassword) {
+      this.usersService.signUp(newUser)
+    }
+
   }
 
 }
