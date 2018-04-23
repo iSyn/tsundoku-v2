@@ -9,8 +9,11 @@ import { SearchPageComponent } from './search-page/search-page.component';
 import { Routes, RouterModule } from '@angular/router';
 
 import { HttpClientModule } from '@angular/common/http'
+
 import { SearchService } from './search.service';
 import { ModalService } from './modal.service'
+import { HamburgerMenuService } from './hamburger-menu.service'
+
 import { SearchBookComponent } from './search-book/search-book.component';
 import { BookModalComponent } from './book-modal/book-modal.component';
 import { HamburgerMenuComponent } from './hamburger-menu/hamburger-menu.component';
@@ -38,7 +41,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     SearchService,
-    ModalService
+    ModalService,
+    HamburgerMenuService
   ],
   bootstrap: [AppComponent]
 })

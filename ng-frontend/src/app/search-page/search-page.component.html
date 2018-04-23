@@ -1,6 +1,5 @@
+<app-book-modal *ngIf='selected'></app-book-modal>
 <div class="search-page">
-  <app-header></app-header>
-  <app-book-modal *ngIf='selected'></app-book-modal>
   <div class="search-container">
     <form
       (submit)="handleSubmit($event)"
