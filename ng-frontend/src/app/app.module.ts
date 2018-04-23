@@ -19,6 +19,7 @@ import { SearchBookComponent } from './search-book/search-book.component';
 import { BookModalComponent } from './book-modal/book-modal.component';
 import { HamburgerMenuComponent } from './hamburger-menu/hamburger-menu.component';
 import { SigninModalComponent } from './signin-modal/signin-modal.component';
+import { SignupModalComponent } from './signup-modal/signup-modal.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     SearchBookComponent,
     BookModalComponent,
     HamburgerMenuComponent,
-    SigninModalComponent
+    SigninModalComponent,
+    SignupModalComponent
   ],
   imports: [
     BrowserModule,

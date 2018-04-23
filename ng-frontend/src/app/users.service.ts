@@ -25,6 +25,13 @@ export class UsersService {
     // await this.http.get('http://localhost:8080/users').toPromise().then((res) => {
     //   console.log('res from signin service', res)
     // })
+    await this.http.get(`http://localhost:8080/users/username/${username}`).toPromise().then((res) => {
+      if (res['password'] === password) {
+        console.log('FOUND USER, LOGGING IN')
+      } else {
+        console.log('incorrect password for user', username)
+      }
+    })
   }
 
   toggleModal = () => {
