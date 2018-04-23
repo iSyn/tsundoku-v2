@@ -9,7 +9,12 @@
     <div class="book-info">
       <h1>{{ book.volumeInfo.title }}</h1>
       <hr>
-      <p>Written by: {{ book.volumeInfo.author }}</p>
+      <p *ngIf='book.volumeInfo.author'>Written by: {{ book.volumeInfo.author }}</p>
+      <button (click)='saveBook()'>TSUNDOKU IT</button>
+      <hr>
+      <p>{{ book.volumeInfo.description }}</p>
+      <hr>
+      <p *ngIf='book.volumeInfo.averageRating > 0'>Average Rating: {{ book.volumeInfo.averageRating }} stars from {{ book.volumeInfo.ratingsCount }} reviews</p>
     </div>
   </div>
 </div>
