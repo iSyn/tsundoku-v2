@@ -1,4 +1,5 @@
 <!-- <app-landing-page></app-landing-page> -->
-<app-hamburger-menu (emitter)=toggleMenu() *ngIf='showHamburgerMenu === true'></app-hamburger-menu>
+<app-hamburger-menu *ngIf='showHamburgerMenu === true'></app-hamburger-menu>
+<app-signin-modal *ngIf='showSigninModal === true'></app-signin-modal>
 <app-header></app-header>
 <router-outlet></router-outlet>

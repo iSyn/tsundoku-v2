@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../users.service'
 
 @Component({
   selector: 'app-hamburger-menu',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HamburgerMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor( private usersService: UsersService) { }
 
   ngOnInit() {
+  }
+
+  handleSigninClick = () => {
+    this.usersService.toggleModal()
+    console.log(this.usersService.getSigninModalStatus())
   }
 
 }

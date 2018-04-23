@@ -1,0 +1,19 @@
+<div class='signup-modal-container'>
+  <div class="modal-bg"></div>
+  <div class="signup-modal">
+    <i class='fa fa-times'></i>
+    <h1>SIGN IN</h1>
+    <form (submit)="handleSubmit($event)">
+      <div class="form-input-container">
+        <div><i class='fa fa-user fa-2x'></i></div>
+        <input [(ngModel)]='username' class='login-username' type="text" name='username' placeholder='Username' autoFocus/>
+      </div>
+      <div class="form-input-container">
+        <div><i class='fa fa-lock fa-2x'></i></div>
+        <input [(ngModel)]='password' class='login-password' type="password" name='password' placeholder='Password'/>
+      </div>
+      <p class='signup-text'>Don't have an account? Click here to Sign Up!</p>
+      <button (click)='handleSubmit($event)'>LOG IN</button>
+    </form>
+  </div>
+</div>

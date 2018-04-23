@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HamburgerMenuService } from './hamburger-menu.service';
 import { Subscription } from 'rxjs/Subscription';
+import { UsersService } from './users.service';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +11,20 @@ import { Subscription } from 'rxjs/Subscription';
 export class AppComponent implements OnInit {
 
   showHamburgerMenu: boolean = false
-  subscription: Subscription
+  showSigninModal: boolean = false
 
-  constructor( private hamburgerMenu: HamburgerMenuService ) { 
-    this.subscription = this.hamburgerMenu.getStatus().subscribe((status) => {
+  // subscription: Subscription
+  // subscription2: Subscription
+
+  constructor( 
+    private hamburgerMenu: HamburgerMenuService,
+    private users: UsersService
+  ) { 
+    this.hamburgerMenu.getStatus().subscribe((status) => {
       this.showHamburgerMenu = status
+    })
+    this.users.getSigninModalStatus().subscribe((status) => {
+      this.showSigninModal = status
     })
   }
 

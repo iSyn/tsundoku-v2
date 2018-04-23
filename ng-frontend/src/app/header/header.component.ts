@@ -24,6 +24,6 @@ export class HeaderComponent implements OnInit {
 
   handleClick = () => {
     this.hamburgerMenu.toggleStatus()
-    console.log('status:', this.hamburgerMenu.getStatus())
+    console.log(this.hamburgerMenu.getStatus()) // I DONT KNOW WHY BUT THIS IS IMPORTANT
   }
 }

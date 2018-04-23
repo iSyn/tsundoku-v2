@@ -11,6 +11,10 @@ export class ModalService {
     this.selected = book
   }
 
+  closeAllModals = () => {
+    //
+  }
+
   getSelected = () => this.selected
 
 }

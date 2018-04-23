@@ -13,10 +13,12 @@ import { HttpClientModule } from '@angular/common/http'
 import { SearchService } from './search.service';
 import { ModalService } from './modal.service'
 import { HamburgerMenuService } from './hamburger-menu.service'
+import { UsersService } from './users.service'
 
 import { SearchBookComponent } from './search-book/search-book.component';
 import { BookModalComponent } from './book-modal/book-modal.component';
 import { HamburgerMenuComponent } from './hamburger-menu/hamburger-menu.component';
+import { SigninModalComponent } from './signin-modal/signin-modal.component';
 
 const appRoutes: Routes = [
   { path: '', component: LandingPageComponent },
@@ -31,7 +33,8 @@ const appRoutes: Routes = [
     SearchPageComponent,
     SearchBookComponent,
     BookModalComponent,
-    HamburgerMenuComponent
+    HamburgerMenuComponent,
+    SigninModalComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +45,8 @@ const appRoutes: Routes = [
   providers: [
     SearchService,
     ModalService,
-    HamburgerMenuService
+    HamburgerMenuService,
+    UsersService
   ],
   bootstrap: [AppComponent]
 })
