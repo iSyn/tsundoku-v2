@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HamburgerMenuService } from './hamburger-menu.service';
 import { Subscription } from 'rxjs/Subscription';
 import { UsersService } from './users.service';
+import { ModalService } from './modal.service';
 
 @Component({
   selector: 'app-root',
